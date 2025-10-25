@@ -1,0 +1,14 @@
+.htaccess
+.env
+*.log
+*.cache
+/vendor/
+/node_modules/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.bak
