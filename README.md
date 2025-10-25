@@ -1,8 +1,4 @@
-
-
 # Pet Shop System (v2) — Sistema de Agendamento e Gestão
-
-## Tudo o que apresentei aqui na hora de entregar o sistema foi mudado, pois lá o cliente tem seus dados, etc tudo certo e alinhados a ética e direito de imagem.
 
 ![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -19,44 +15,75 @@ Principais ganhos desta versão:
 - Protecao de credenciais com bcrypt e prepared statements para reduzir riscos de injecao SQL
 - Automacao basica para instalacao local e verificacao de integridade do banco
 
-## Funcionalidades principais
+---
 
-- Autenticação com perfis (admin, recepcionista)
-- CRUD de clientes e pets (vínculo cliente → pet)
-- Catálogo de serviços (preço, duração, categoria)
-- Agendamento de atendimentos com status e observações
-- Dashboard com métricas básicas e gráficos (Chart.js)
-- Filtros e buscas por data, status e categoria
-- Scripts de automação local: `scripts/auto_setup.ps1` e verificador `scripts/test_db.php`
+🐾 Pet Shop System v2 — Agendamento e Gestão
+
+Sistema profissional de agendamento para petshops locais, versão revisada do meu projeto original (v1) com melhorias de segurança, usabilidade e estabilidade. Resolve conflitos de agenda, organiza histórico de clientes/pets e traz métricas simples para controle financeiro.
+
+🚀 Highlights da v2
+
+- Check-in rápido: cliente → pet → serviço
+- Status de atendimento rastreável: Agendado → Em Atendimento → Concluído
+- Segurança forte: bcrypt + prepared statements
+- Scripts automáticos de instalação e teste
+- Dashboard com métricas e gráficos (Chart.js)
+
+💡 Funcionalidades (resumo)
+
+| Módulo        | Função                                   |
+| ------------- | ---------------------------------------- |
+| Autenticação  | Admin e recepção com acesso restrito     |
+| Clientes/Pets | CRUD completo com vínculo 1:N            |
+| Serviços      | Preço, duração, categoria                |
+| Agenda        | Gestão por data, status e observações    |
+| Dashboard     | Totais + gráficos                        |
+| Pesquisas     | Filtros por data, status e categoria     |
+| Automação     | Setup local e verificação de integridade |
+
+🔧 Segurança (resumo)
+
+- Senhas: `password_hash()` + `password_verify()`
+- Prepared statements em todas entradas
+- `htmlspecialchars()` para saída segura
+- Soft-delete para histórico
+
+⚙ Stack Técnico (resumo)
+
+- Backend: PHP 7.4+ (procedural, mysqli)
+- Banco: MySQL/MariaDB (utf8mb4)
+- Frontend: HTML5, CSS3, JS (ES6), Chart.js, Font Awesome
+- Ambiente recomendado: XAMPP no Windows
+
+---
+
+## Funcionalidades principais
 
 ## O que mudou em relação à v1
 
-- Correções de compatibilidade de charset (UTF-8/utf8mb4) e normalização de texto para ambientes Windows problemáticos
-- Remoção de scripts de manutenção sensíveis do caminho público após uso (one-time resets)
-- Hardening: uso consistente de prepared statements, escapes de saída e verificação de sessões
-- README consolidado, com instruções de instalação e testes manuais
-
-## Stack técnico
-
 - Backend: PHP 7.4+ (procedural, mysqli)
-- Banco de dados: MySQL / MariaDB (utf8mb4)
-- Frontend: HTML5, CSS3, JavaScript (ES6), Chart.js, Font Awesome
-- Ambiente local recomendado: XAMPP (Windows)
+  Clique nas imagens para abrir em tamanho maior.
 
----
+[![Atendimentos](https://i.postimg.cc/bSXKVmvF/atendimentos.png)](https://postimg.cc/bSXKVmvF) [![Clientes](https://i.postimg.cc/p5Ngcsd6/Clientes.png)](https://postimg.cc/p5Ngcsd6) [![Logado](https://i.postimg.cc/wRKS4wBr/logado-como-recepcionista.png)](https://postimg.cc/wRKS4wBr)
+
+[![Login](https://i.postimg.cc/64sDbMQF/Login.png)](https://postimg.cc/64sDbMQF) [![Login2](https://i.postimg.cc/8f8qXZC2/Login2.png)](https://postimg.cc/8f8qXZC2) [![Novo Atendimento](https://i.postimg.cc/dZMzN51F/novo-atendimento.png)](https://postimg.cc/dZMzN51F)
+
+[![Novo Pet](https://i.postimg.cc/gL9ftgJm/novo-pet.png)](https://postimg.cc/gL9ftgJm) [![Novo Servico](https://i.postimg.cc/Mfkh39Tz/novo-servico.png)](https://postimg.cc/Mfkh39Tz) [![Novo Cliente](https://i.postimg.cc/n986S3zV/novocliente.png)](https://postimg.cc/n986S3zV)
+
+[![Pet](https://i.postimg.cc/jnVG3M5S/petx.png)](https://postimg.cc/jnVG3M5S) [![Servicos](https://i.postimg.cc/ctqVkFHC/servicos.png)](https://postimg.cc/ctqVkFHC)
 
 ## Instalação (local — Windows / XAMPP)
 
 Siga estes passos em uma máquina de desenvolvimento Windows com XAMPP instalado.
 
 1. Pare o Apache/MySQL no XAMPP Control Panel.
-2. Copie o projeto para a pasta do servidor (execute no PowerShell como Administrador):
+1. Copie o projeto para a pasta do servidor (execute no PowerShell como Administrador):
 
 ```powershell
 Copy-Item "C:\Users\User\Desktop\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
 ```
 
-3. Crie o banco de dados e importe o arquivo SQL (duas opções):
+1. Crie o banco de dados e importe o arquivo SQL (duas opcoes):
 
 - phpMyAdmin: acesse [http://localhost/phpmyadmin](http://localhost/phpmyadmin) → New → import `sql/database.sql` (garanta UTF-8/utf8mb4)
 
@@ -70,14 +97,14 @@ cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\ht
 
 Se o usuário `root` tiver senha, adicione `-p` e informe a senha quando solicitado.
 
-4. Ajuste a configuração se necessário:
+1. Ajuste a configuracao se necessario:
 
 - `config/database.php` — DB_HOST, DB_USER, DB_PASS, DB_NAME
 - `config/config.php` — `BASE_URL` (padrão: `http://localhost/Petshopsystemv2/`)
 
-5. Inicie Apache e MySQL no XAMPP Control Panel.
+1. Inicie Apache e MySQL no XAMPP Control Panel.
 
-6. Abra no navegador:
+1. Abra no navegador:
 
 ````text
 
@@ -122,7 +149,7 @@ Login | Dashboard | Agenda | Cadastro de Pets | Relatórios…
 - Scripts perigosos removidos do público
 - README refeito com instruções completas e testes claros
 
- Stack técnico
+🛠️ Stack técnico
 
 - PHP 7.4+ (procedural, mysqli)
 - MySQL/MariaDB (utf8mb4)
@@ -138,23 +165,23 @@ http://localhost/Petshopsystemv2/
 
 1. Pare serviços no XAMPP
 
-2. Copie o projeto pra htdocs:
+1. Copie o projeto pra htdocs:
 
 ```powershell
 Copy-Item "C:\Users\User\Desktop\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
-````
+```
 
-3. Crie o banco e importe o SQL via phpMyAdmin ou CLI:
+1. Crie o banco e importe o SQL via phpMyAdmin ou CLI:
 
 ```powershell
 cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\htdocs\Petshopsystemv2\sql\database.sql"'
 ```
 
-4. Ajuste `config/database.php` e `config/config.php`
+1. Ajuste `config/database.php` e `config/config.php`
 
-5. Inicie Apache e MySQL
+1. Inicie Apache e MySQL
 
-6. Acesse o link do início
+1. Acesse o link do início
 
 </details>
 
@@ -186,7 +213,9 @@ No navegador:
  Autor
 
 Natan Da Luz
-📧 natandaluz01@gmail.com
+📧 [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
 
+📄 Licença
 
 MIT — livre pra estudar e evoluir o código.
+````
