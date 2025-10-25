@@ -2,6 +2,8 @@
 
 # Pet Shop System (v2) — Sistema de Agendamento e Gestão
 
+## Tudo o que apresentei aqui na hora de entregar o sistema foi mudado, pois lá o cliente tem seus dados, etc tudo certo e alinhados a ética e direito de imagem.
+
 ![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
 Versão profissional e revisada de um sistema de agendamento focado em petshops locais. Esta release (v2) consolida melhorias de segurança, correções de bugs, experiência da recepção e capacidade de auditoria dos atendimentos.
