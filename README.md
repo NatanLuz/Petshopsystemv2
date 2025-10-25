@@ -120,7 +120,7 @@ Login | Dashboard | Agenda | Cadastro de Pets | Relatórios…
 - Scripts perigosos removidos do público
 - README refeito com instruções completas e testes claros
 
-🛠️ Stack técnico
+ Stack técnico
 
 - PHP 7.4+ (procedural, mysqli)
 - MySQL/MariaDB (utf8mb4)
@@ -186,6 +186,5 @@ No navegador:
 Natan Da Luz
 📧 natandaluz01@gmail.com
 
-📄 Licença
 
 MIT — livre pra estudar e evoluir o código.
