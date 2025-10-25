@@ -106,14 +106,13 @@ Se o usuário `root` tiver senha, adicione `-p` e informe a senha quando solicit
 
 1. Abra no navegador:
 
-````text
 
- Pet Shop System (v2) — Zero caos. Tudo organizado.
 
----
+ Pet Shop System (v2).
 
-Sistema real de agendamento e gestão feito pra petshops que se perdem na agenda, esquecem cliente, cobram errado… Aqui o fluxo é rápido, rastreável e sem dores de cabeça.
-Esta é a versão 2, evolução direta do meu primeiro sistema, com várias melhorias sérias: segurança, estabilidade e usabilidade.
+
+Sistema real de agendamento e gestão feito pra petshops que se perdem na agenda, esquecem cliente, cobram errado.. Aqui o fluxo é rápido, rastreável e sem dores de cabeça.
+Esta é a versão 2, evolução direta do meu primeiro sistema, com várias melhorias: segurança, estabilidade e usabilidade.
 
  Highlights da v2
 
@@ -123,7 +122,7 @@ Esta é a versão 2, evolução direta do meu primeiro sistema, com várias melh
 - Scripts automáticos para instalar e testar com 1 comando
 - Dashboard com visão financeira e métricas simples
 
-Fiz esse projeto com foco real no dia a dia da recepção — menos clique, mais resultado.
+Fiz esse projeto com foco real no dia a dia da recepção do petshop — menos clique, mais resultado.
 
  Funcionalidades principais
 
@@ -136,8 +135,6 @@ Fiz esse projeto com foco real no dia a dia da recepção — menos clique, mais
 | Dashboard | Totais + gráficos com Chart.js |
 | Pesquisas | Filtros por data, status e categoria |
 | Automação | Scripts de setup e verificação |
-
-📸 Prints do sistema
 
 Login | Dashboard | Agenda | Cadastro de Pets | Relatórios…
 
