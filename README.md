@@ -1,4 +1,4 @@
-# Pet Shop System (v2) — Sistema de Agendamento e Gestão
+## Pet Shop System (v2) — Sistema de Agendamento e Gestão
 
 ![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -17,7 +17,7 @@ Principais ganhos desta versão:
 
 ---
 
-🐾 Pet Shop System v2 — Agendamento e Gestão
+## Pet Shop System v2 — Agendamento e Gestão
 
 Sistema profissional de agendamento para petshops locais, versão revisada do meu projeto original (v1) com melhorias de segurança, usabilidade e estabilidade. Resolve conflitos de agenda, organiza histórico de clientes/pets e traz métricas simples para controle financeiro.
 
@@ -41,14 +41,14 @@ Sistema profissional de agendamento para petshops locais, versão revisada do me
 | Pesquisas     | Filtros por data, status e categoria     |
 | Automação     | Setup local e verificação de integridade |
 
-## Segurança (resumo)
+## Segurança 
 
 - Senhas: `password_hash()` + `password_verify()`
 - Prepared statements em todas entradas
 - `htmlspecialchars()` para saída segura
 - Soft-delete para histórico
 
-⚙ Stack Técnico (resumo)
+## Stack Técnico
 
 - Backend: PHP 7.4+ (procedural, mysqli)
 - Banco: MySQL/MariaDB (utf8mb4)
@@ -146,7 +146,7 @@ Login | Dashboard | Agenda | Cadastro de Pets | Relatórios…
 - Scripts perigosos removidos do público
 - README refeito com instruções completas e testes claros
 
-🛠️ Stack técnico
+## Stack técnico
 
 - PHP 7.4+ (procedural, mysqli)
 - MySQL/MariaDB (utf8mb4)
