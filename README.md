@@ -21,7 +21,7 @@ Principais ganhos desta versão:
 
 Sistema profissional de agendamento para petshops locais, versão revisada do meu projeto original (v1) com melhorias de segurança, usabilidade e estabilidade. Resolve conflitos de agenda, organiza histórico de clientes/pets e traz métricas simples para controle financeiro.
 
-🚀 Highlights da v2
+## Highlights da v2
 
 - Check-in rápido: cliente → pet → serviço
 - Status de atendimento rastreável: Agendado → Em Atendimento → Concluído
@@ -29,7 +29,7 @@ Sistema profissional de agendamento para petshops locais, versão revisada do me
 - Scripts automáticos de instalação e teste
 - Dashboard com métricas e gráficos (Chart.js)
 
-💡 Funcionalidades (resumo)
+## Funcionalidades (resumo)
 
 | Módulo        | Função                                   |
 | ------------- | ---------------------------------------- |
@@ -41,7 +41,7 @@ Sistema profissional de agendamento para petshops locais, versão revisada do me
 | Pesquisas     | Filtros por data, status e categoria     |
 | Automação     | Setup local e verificação de integridade |
 
-🔧 Segurança (resumo)
+## Segurança (resumo)
 
 - Senhas: `password_hash()` + `password_verify()`
 - Prepared statements em todas entradas
@@ -210,9 +210,7 @@ No navegador:
  Autor
 
 Natan Da Luz
-📧 [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
+📧 [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com).
 
-📄 Licença
-
-MIT — livre pra estudar e evoluir o código.
-````
+Este sistema foi desenvolvido como freelance para um pet shop real.
+Os dados apresentados na versão pública são fictícios para preservar a segurança e privacidade do cliente.
