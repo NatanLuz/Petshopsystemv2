@@ -106,7 +106,7 @@ Se o usuário `root` tiver senha, adicione `-p` e informe a senha quando solicit
 
 1. Abra no navegador:
 
-
+Fazendo este esquema abaixo
 
  Pet Shop System (v2).
 
