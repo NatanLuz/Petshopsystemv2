@@ -8,6 +8,8 @@ Versão profissional e revisada de um sistema de agendamento focado em petshops 
 
 O sistema resolve um problema operacional real de petshops pequenas: organizar atendimentos, evitar conflitos de agenda, manter histórico consolidado por cliente/pet e fornecer métricas simples para controle financeiro. Esta versão é uma atualização de um projeto anterior (v1) com melhorias concretas em segurança, estabilidade e usabilidade.
 
+
+
 Principais ganhos desta versão:
 
 - Fluxo de recepcao mais rapido e previsivel (cadastro rapido de clientes/pets/servicos)
@@ -214,3 +216,6 @@ Natan Da Luz
 
 Este sistema foi desenvolvido como freelance para um pet shop real.
 Os dados apresentados na versão pública são fictícios para preservar a segurança e privacidade do cliente.
+
+
+Receberá no futuro boas atualizações e talvez uso de ia
