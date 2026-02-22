@@ -1,7 +1,4 @@
--- encoding: UTF-8
--- encoding: UTF-8
 -- Criacao do banco de dados
--- Tabela de usuarios (sistema de login)
 -- Tabela de usuarios (sistema de login)
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,7 +33,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 ('Juliana Souza Martins', 'juliana.souza@email.com', '(11) 3678-9013', '(11) 93210-9876', '678.901.234-55', 'Rua Haddock Lobo, 987', 'Cerqueira Cesar', 'Sao Paulo', 'SP', '01414-001'),
 
 ('Fernanda Lima Santos', 'fernanda.lima@email.com', '(11) 3890-1235', '(11) 91098-7654', '890.123.456-77', 'Rua da Consolacao, 147', 'Consolacao', 'Sao Paulo', 'SP', '01301-000');
--- Tabela de pets
+-- Tabela dos pets
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     nome VARCHAR(50) NOT NULL,
