@@ -226,5 +226,3 @@ Clique nas imagens para visualizar em tamanho maior:
 
 Sistema desenvolvido para uso real em petshop local.  
 Todos os dados presentes na versão demonstrativa pública são fictícios, preservando a segurança e a privacidade do cliente real.
-
-Este repositório seguirá recebendo evoluções (incluindo possíveis recursos com IA) à medida que novas necessidades operacionais surgirem.
