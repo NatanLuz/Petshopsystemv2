@@ -12,6 +12,8 @@ A **v2** é a evolução direta da primeira versão do projeto, com foco em:
 
 O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema para operar de forma confiável em ambiente real**: fluxo rápido, rastreável e sem dores de cabeça.
 
+(Integrações com IA futuramente)
+
 ---
 
 ## Proposta de valor
