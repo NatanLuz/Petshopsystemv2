@@ -12,8 +12,6 @@ A **v2** é a evolução direta da primeira versão do projeto, com foco em:
 
 O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema para operar de forma confiável em ambiente real**: fluxo rápido, rastreável e sem dores de cabeça.
 
-(Integrações com IA futuramente)
-
 ---
 
 ## Proposta de valor
@@ -37,7 +35,7 @@ Toda a solução foi pensada para a rotina da recepção do petshop: **fluxo de 
 - **Dashboard operacional** com indicadores e gráficos via Chart.js.
 - **Padronização de encoding**: UTF-8 / utf8mb4 (fim dos acentos quebrados no Windows).
 
-Projeto desenvolvido e utilizado em **petshop real**, com versão pública sanitizada para preservar privacidade.
+Projeto desenvolvido e utilizado em **petshop real e clinica veterinaria**, com versão pública sanitizada para preservar privacidade.
 
 ---
 
