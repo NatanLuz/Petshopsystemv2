@@ -53,7 +53,7 @@ A base foi pensada para facilitar uma futura migração para uma arquitetura mai
 
 ---
 
-## Funcionalidades principais
+## Funcionalidades principais do projeto
 
 | Módulo        | Responsabilidade / O que faz                           |
 | ------------- | ------------------------------------------------------ |
@@ -162,7 +162,7 @@ Para validar rapidamente a conexão com o banco e a estrutura básica:
 & php "C:\xampp\htdocs\Petshopsystemv2\scripts\test_db.php"
 ````
 
-No navegador, recomenda-se o seguinte fluxo mínimo de teste:
+No navegador, recomenda-se o seguinte fluxo mínimo de teste para extrair totalmente o projeto:
 
 - Realizar login com usuário de teste.
 - Criar um **cliente**.
