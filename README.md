@@ -39,7 +39,7 @@ Projeto desenvolvido e utilizado em **petshop real e clinica veterinaria**, com 
 
 ---
 
-## Arquitetura e estrutura técnica
+## Arquitetura e estrutura técnica do projeto
 
 Embora desenvolvido em **PHP procedural (mysqli)**, o projeto foi estruturado com foco em clareza e evolução futura:
 
