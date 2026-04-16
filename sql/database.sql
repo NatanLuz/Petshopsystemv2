@@ -1,5 +1,6 @@
 -- Criacao do banco de dados
--- Tabela de usuarios (sistema de login)
+
+-- Tabela de usuarios utilizando para o sistema de login ficticio
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
