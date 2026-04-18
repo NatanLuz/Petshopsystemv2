@@ -1,4 +1,4 @@
-## Pet Shop System (v2) — Sistema Real de Agendamento e Gestão Operacional
+## Pet Shop System (v2) — Sistema Real de Agendamento e Gestão Operacional PARA PETSHOPS  E CLÍNICAS
 
 ![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
