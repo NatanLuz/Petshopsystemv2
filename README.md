@@ -6,7 +6,7 @@ Sistema de agendamento e gestão desenvolvido tanto para petshops quanto para cl
 
 **(Futuramente esta aplicação terá uma atualização com LARAVEL em seu sistema e não será algo desktop, e sim na Web, mantendo seu protocolo de segurança, credibilidade e profissionalismo.)**
 
-A **v2** é a evolução direta da primeira versão do projeto, com foco em:
+A **v2** é a evolução direta da primeira versão do projeto e foca em:
 
 - Robustez e previsibilidade operacional
 - Segurança aplicada de forma consistente
