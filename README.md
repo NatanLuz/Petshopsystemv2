@@ -28,7 +28,7 @@ Toda a solução foi pensada para a rotina da recepção do petshop: **fluxo de 
 
 ---
 
-## Highlights da v2
+## Highlights da Versão 2 (V2) (logo logo a V3..)
 
 - **Fluxo otimizado de check-in**: cliente → pet → serviço, sem enrolação.
 - **Controle de estado do atendimento**: Agendado → Em Atendimento → Concluído.
