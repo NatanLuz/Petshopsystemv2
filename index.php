@@ -9,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Redireciona para pagina de login
+// Redireciona para página de login
 header('Location: pages/login.php');
 exit();
 ?>
