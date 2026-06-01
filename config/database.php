@@ -21,7 +21,7 @@ function getConnection() {
     }
 }
 
-// Funcao para executar queries preparadas
+// Funcao para exec queries preparadas na aplicação 
 function executeQuery($query, $params = [], $types = "") {
     $conn = getConnection();
     $stmt = $conn->prepare($query);
