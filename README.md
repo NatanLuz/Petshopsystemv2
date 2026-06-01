@@ -101,10 +101,9 @@ O foco é reduzir os vetores clássicos de ataque em aplicações PHP tradiciona
 
 ## Stack técnico
 
-- **Backend**: PHP 7.4+ (procedural, mysqli)
+- **Backend**: PHP (procedural, mysqli)
 - **Banco de dados**: MySQL / MariaDB (utf8mb4)
-- **Frontend**: HTML5, CSS3
-- **JavaScript**: ES6 + Chart.js
+- **Frontend**: HTML5, CSS3, Javascript & Chart.js
 - **Ícones/UI**: Font Awesome
 - **Ambiente de desenvolvimento recomendado**: XAMPP (Windows)
 
@@ -124,6 +123,7 @@ http://localhost/Petshopsystemv2/
   <summary><strong>Passo a passo completo</strong></summary>
 
 1. **Pare o Apache/MySQL** no XAMPP Control Panel.
+
 2. **Copie o projeto** para a pasta do servidor (PowerShell como Administrador):
 
 	```powershell
