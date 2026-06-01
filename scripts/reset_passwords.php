@@ -24,7 +24,7 @@ try {
         $stmt->close();
     }
 
-    // Show counts to confirm
+    // Mostre contagens para confirmar
     $res = $conn->query('SELECT id, email, LEFT(senha, 20) AS prefix FROM usuarios');
     while ($row = $res->fetch_assoc()) {
         echo $row['id'] . ' | ' . $row['email'] . ' | ' . $row['prefix'] . "...\n";
@@ -35,3 +35,4 @@ try {
 } catch (Throwable $e) {
     echo 'Error: ' . $e->getMessage() . "\n";
 }
+
