@@ -16,9 +16,9 @@ O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema p
 
 ---
 
-## Proposta do projeto 
+## Proposta do Projeto 
 
-O sistema atua diretamente em três frentes críticas do negócio:
+Este sistema atua diretamente em três frentes críticas do negócio:
 
 - **Organização operacional** — agenda estruturada com controle de status e prevenção de inconsistências.
 - **Rastreabilidade** — histórico consolidado por cliente e pet, com registro completo de atendimentos.
@@ -28,7 +28,7 @@ Toda a solução foi pensada para a rotina da recepção do petshop: **fluxo de 
 
 ---
 
-## Highlights da Versão 2 (V2) (logo a V3..)
+## Highlights da Versão 2 (V2) (em breve a Versão V3..)
 
 - **Fluxo otimizado de check-in**: cliente → pet → serviço, sem enrolação.
 - **Controle de estado do atendimento**: Agendado → Em Atendimento → Concluído.
