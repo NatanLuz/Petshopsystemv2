@@ -3,7 +3,7 @@ session_start();
 
 // encoding: UTF-8
 
-// Se ja esta logado, redireciona para dashboard
+// Se ja esta logado, redireciona para o dashboard
 if (isset($_SESSION['user_id'])) {
     header('Location: pages/dashboard.php');
     exit();
