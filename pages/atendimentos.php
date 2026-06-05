@@ -7,7 +7,8 @@ $page_title = 'Gerenciar Atendimentos';
 $success = '';
 $error = '';
 
-// Acoes do CRUD
+// Aqui é as ações do CRUD
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     
