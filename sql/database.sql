@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 ('Juliana Souza Martins', 'juliana.souza@email.com', '(11) 3678-9013', '(11) 93210-9876', '678.901.234-55', 'Rua Haddock Lobo, 987', 'Cerqueira Cesar', 'Sao Paulo', 'SP', '01414-001'),
 
 ('Fernanda Lima Santos', 'fernanda.lima@email.com', '(11) 3890-1235', '(11) 91098-7654', '890.123.456-77', 'Rua da Consolacao, 147', 'Consolacao', 'Sao Paulo', 'SP', '01301-000');
--- Tabela dos pets
+-- Tabela pets
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     nome VARCHAR(50) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS servicos (
 (3, 3, 2, DATE_SUB(CURDATE(), INTERVAL 3 DAY), '10:00:00', 'Concluido', 90.00),
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 (1, 8, 2, DATE_SUB(CURDATE(), INTERVAL 10 DAY), '09:00:00', 'Concluido', 80.00),
--- Criar indices para melhor performance
+-- Criando indices para melhor performance
 CREATE INDEX idx_pets_cliente ON pets(cliente_id);
 -- Tabela de atendimentos
 CREATE TABLE IF NOT EXISTS atendimentos (
@@ -104,7 +104,7 @@ INSERT INTO usuarios (nome, email, senha, role) VALUES
 ('Administrador', 'admin@petshop.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
 ('Recepcionista', 'recepcao@petshop.com', '$2y$10$4IiPXlmMU3Z7YYPBhiHQW.PEZ2Z1pXF4GVx6TqeJlLUbQUQ7xQOPy', 'recepcionista');
 
--- Inserir clientes de teste
+-- Inserir clientes de (teste)
 INSERT INTO clientes (nome, email, telefone, celular, cpf, endereco, bairro, cidade, estado, cep) VALUES
 ('Joao Silva Santos', 'joao.silva@email.com', '(11) 3456-7890', '(11) 98765-4321', '123.456.789-00', 'Rua das Flores, 123', 'Centro', 'Sao Paulo', 'SP', '01234-567'),
 ('Maria Oliveira Costa', 'maria.oliveira@email.com', '(11) 3234-5678', '(11) 97654-3210', '234.567.890-11', 'Av. Paulista, 456', 'Bela Vista', 'Sao Paulo', 'SP', '01310-100'),
