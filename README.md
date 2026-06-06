@@ -8,7 +8,7 @@ Sistema de agendamento e gestão desenvolvido tanto para petshops quanto para cl
 
 A Versão v2 do projeto é a evolução direta da primeira versão do projeto e foca em:
 
-- Robustez e previsibilidade operacional
+- Robustez e também previsibilidade operacional
 - Segurança aplicada de forma consistente
 - Melhoria do fluxo da recepção (menos cliques, mais resultado)
 
