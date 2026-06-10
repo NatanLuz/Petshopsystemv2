@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
 
-Sistema de agendamento e gestão desenvolvido tanto para petshops quanto para clínicas veterinárias que enfrentam problemas recorrentes como conflitos de agenda, perda de histórico de clientes/pets e inconsistências no controle financeiro.
+Construí um sistema de agendamento e gestão desenvolvido tanto para petshops quanto para clínicas veterinárias que enfrentam problemas recorrentes como conflitos de agenda, perda de histórico de clientes/pets e inconsistências no controle financeiro.
 
 **(Futuramente esta aplicação terá uma atualização com LARAVEL em seu sistema e não será algo desktop, e sim na Web, mantendo seu protocolo de segurança, credibilidade e profissionalismo.)**
 
