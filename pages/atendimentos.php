@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 checkLogin();
 
 $page_title = 'Gerenciar Atendimentos';
@@ -10,8 +10,9 @@ $error = '';
 // Aqui é as ações do CRUD
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verifyCsrf();
     $action = $_POST['action'] ?? '';
-    
+
     if ($action === 'create' || $action === 'update') {
         $pet_id = intval($_POST['pet_id']);
         $servico_id = intval($_POST['servico_id']);
@@ -21,17 +22,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $valor = floatval($_POST['valor']);
         $observacoes = cleanInput($_POST['observacoes']);
         $usuario_id = $_SESSION['user_id'];
-        
+        $status_validos = ['Agendado', 'Em Atendimento', 'Concluido', 'Cancelado'];
+
         if (empty($pet_id) || empty($servico_id) || empty($data_atendimento) || empty($hora_atendimento)) {
             $error = 'Pet, servico, data e hora sao obrigatorios.';
+        } elseif (!isValidDate($data_atendimento) || !isValidDate($hora_atendimento, 'H:i')) {
+            $error = 'Data ou hora invalida.';
+        } elseif (!in_array($status, $status_validos, true) || $valor < 0) {
+            $error = 'Status ou valor invalido.';
         } else {
             $conn = getConnection();
-            
-            if ($action === 'create') {
-                $stmt = $conn->prepare("INSERT INTO atendimentos (pet_id, servico_id, usuario_id, data_atendimento, hora_atendimento, status, valor, observacoes) 
+            $activeClause = $action === 'create' ? ' AND ativo = 1' : '';
+            $referenceStmt = $conn->prepare("SELECT
+                    EXISTS(SELECT 1 FROM pets WHERE id = ?$activeClause) AS pet_ok,
+                    EXISTS(SELECT 1 FROM servicos WHERE id = ?$activeClause) AS servico_ok");
+            $referenceStmt->bind_param("ii", $pet_id, $servico_id);
+            $referenceStmt->execute();
+            $references = $referenceStmt->get_result()->fetch_assoc();
+            $referenceStmt->close();
+
+            if (!$references['pet_ok'] || !$references['servico_ok']) {
+                $error = 'Pet ou servico selecionado nao esta disponivel.';
+                $conn->close();
+            } elseif ($action === 'create') {
+                $stmt = $conn->prepare("INSERT INTO atendimentos (pet_id, servico_id, usuario_id, data_atendimento, hora_atendimento, status, valor, observacoes)
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param("iiiissds", $pet_id, $servico_id, $usuario_id, $data_atendimento, $hora_atendimento, $status, $valor, $observacoes);
-                
+
                 if ($stmt->execute()) {
                     $success = 'Atendimento agendado com sucesso!';
                 } else {
@@ -39,44 +56,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             } else { // update
                 $id = intval($_POST['id']);
-                $stmt = $conn->prepare("UPDATE atendimentos SET pet_id=?, servico_id=?, data_atendimento=?, hora_atendimento=?, status=?, valor=?, observacoes=? 
+                $stmt = $conn->prepare("UPDATE atendimentos SET pet_id=?, servico_id=?, data_atendimento=?, hora_atendimento=?, status=?, valor=?, observacoes=?
                                         WHERE id=?");
                 $stmt->bind_param("iisssdsi", $pet_id, $servico_id, $data_atendimento, $hora_atendimento, $status, $valor, $observacoes, $id);
-                
+
                 if ($stmt->execute()) {
                     $success = 'Atendimento atualizado com sucesso!';
                 } else {
                     $error = 'Erro ao atualizar atendimento.';
                 }
             }
-            
-            $stmt->close();
-            $conn->close();
+
+            if (isset($stmt)) {
+                $stmt->close();
+                $conn->close();
+            }
         }
     } elseif ($action === 'delete') {
         $id = intval($_POST['id']);
         $conn = getConnection();
         $stmt = $conn->prepare("DELETE FROM atendimentos WHERE id = ?");
         $stmt->bind_param("i", $id);
-        
+
         if ($stmt->execute()) {
             $success = 'Atendimento excluido com sucesso!';
         } else {
             $error = 'Erro ao excluir atendimento.';
         }
-        
+
         $stmt->close();
         $conn->close();
     }
 }
 
-// Buscando atendimentos
+// Buscando atendimentos no sistema com filtros
 $status_filter = isset($_GET['status']) ? cleanInput($_GET['status']) : '';
 $data_filter = isset($_GET['data']) ? cleanInput($_GET['data']) : '';
 
 $conn = getConnection();
 
-$query = "SELECT a.*, p.nome as pet_nome, p.especie, c.nome as cliente_nome, c.telefone, 
+$query = "SELECT a.*, p.nome as pet_nome, p.especie, c.nome as cliente_nome, c.telefone,
           s.nome as servico_nome, s.categoria, u.nome as usuario_nome
           FROM atendimentos a
           JOIN pets p ON a.pet_id = p.id
@@ -114,10 +133,10 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Buscar pets para o select
-$pets_result = $conn->query("SELECT p.id, p.nome, c.nome as cliente_nome 
-                              FROM pets p 
-                              JOIN clientes c ON p.cliente_id = c.id 
-                              WHERE p.ativo = 1 
+$pets_result = $conn->query("SELECT p.id, p.nome, c.nome as cliente_nome
+                              FROM pets p
+                              JOIN clientes c ON p.cliente_id = c.id
+                              WHERE p.ativo = 1
                               ORDER BY c.nome, p.nome");
 $pets = [];
 while ($row = $pets_result->fetch_assoc()) {
@@ -163,10 +182,11 @@ include '../includes/header.php';
 
         <select name="status" style="padding: 0.75rem; border: 1px solid #d1d3e2; border-radius: 4px;">
             <option value="">Todos os Status</option>
-                <option value="Agendado" <?php echo $status_filter === 'Agendado' ? 'selected' : ''; ?>>Agendado</option>
-                <option value="Em Atendimento" <?php echo $status_filter === 'Em Atendimento' ? 'selected' : ''; ?>>Em Atendimento</option>
-                <option value="Concluido" <?php echo $status_filter === 'Concluido' ? 'selected' : ''; ?>>Concluido</option>
-                <option value="Cancelado" <?php echo $status_filter === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
+            <option value="Agendado" <?php echo $status_filter === 'Agendado' ? 'selected' : ''; ?>>Agendado</option>
+            <option value="Em Atendimento" <?php echo $status_filter === 'Em Atendimento' ? 'selected' : ''; ?>>Em
+                Atendimento</option>
+            <option value="Concluido" <?php echo $status_filter === 'Concluido' ? 'selected' : ''; ?>>Concluido</option>
+            <option value="Cancelado" <?php echo $status_filter === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
         </select>
 
         <button type="submit" class="btn btn-primary">
@@ -208,15 +228,15 @@ include '../includes/header.php';
                 </td>
                 <td>
                     <strong><?php echo htmlspecialchars($atendimento['pet_nome']); ?></strong><br>
-                    <small style="color: #858796;"><?php echo $atendimento['especie']; ?></small>
+                    <small style="color: #858796;"><?php echo e($atendimento['especie']); ?></small>
                 </td>
                 <td>
                     <?php echo htmlspecialchars($atendimento['servico_nome']); ?><br>
-                    <small style="color: #858796;"><?php echo $atendimento['categoria']; ?></small>
+                    <small style="color: #858796;"><?php echo e($atendimento['categoria']); ?></small>
                 </td>
                 <td><strong><?php echo formatMoney($atendimento['valor']); ?></strong></td>
                 <td>
-                    <?php 
+                    <?php
                     $badge_class = '';
                     switch($atendimento['status']) {
                         case 'Agendado': $badge_class = 'badge-primary'; break;
@@ -225,16 +245,17 @@ include '../includes/header.php';
                         case 'Cancelado': $badge_class = 'badge-danger'; break;
                     }
                     ?>
-                    <span class="badge <?php echo $badge_class; ?>"><?php echo $atendimento['status']; ?></span>
+                    <span class="badge <?php echo $badge_class; ?>"><?php echo e($atendimento['status']); ?></span>
                 </td>
                 <td>
                     <div class="btn-group">
                         <button class="btn btn-sm btn-info"
-                            onclick='editAtendimento(<?php echo json_encode($atendimento); ?>)'>
+                            onclick='editAtendimento(<?php echo json_encode($atendimento, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>
                             <i class="fas fa-edit"></i>
                         </button>
                         <form method="POST" style="display: inline;"
                             onsubmit="return confirmDelete('Tem certeza que deseja excluir este atendimento?')">
+                            <?php echo csrfField(); ?>
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $atendimento['id']; ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -267,6 +288,7 @@ include '../includes/header.php';
             </div>
 
             <form method="POST" id="atendimentoForm">
+                <?php echo csrfField(); ?>
                 <input type="hidden" name="action" id="formAction" value="create">
                 <input type="hidden" name="id" id="atendimentoId">
 

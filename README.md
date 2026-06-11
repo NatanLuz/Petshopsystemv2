@@ -4,8 +4,6 @@
 
 Construí um sistema de agendamento e gestão desenvolvido tanto para petshops quanto para clínicas veterinárias que enfrentam problemas recorrentes como conflitos de agenda, perda de histórico de clientes/pets e inconsistências no controle financeiro.
 
-**(Futuramente esta aplicação terá uma atualização com LARAVEL em seu sistema e não será algo desktop, e sim na Web, mantendo seu protocolo de segurança, credibilidade e profissionalismo.)**
-
 A Versão v2 do projeto é a evolução direta da primeira versão do projeto e foca em:
 
 - Robustez e também previsibilidade operacional
@@ -28,11 +26,11 @@ Toda a solução foi pensada para a rotina da recepção do petshop: **fluxo de 
 
 ---
 
-## Highlights da Versão 2 (V2) |em breve a Versão V3..|
+## Highlights da Versão 2 (V2)
 
 - **Fluxo otimizado de check-in**: cliente → pet → serviço, sem enrolação.
 - **Controle de estado do atendimento**: Agendado → Em Atendimento → Concluído.
-- **Hardening de segurança**: `password_hash()`/`password_verify()` (bcrypt) + prepared statements em 100% das interações com banco.
+- **Hardening de segurança**: `password_hash()`/`password_verify()` (bcrypt) + prepared statements em consultas com entrada variável.
 - **Scripts automatizados** para instalação local e verificação de integridade do ambiente.
 - **Dashboard operacional** com indicadores e gráficos via Chart.js.
 - **Padronização de encoding**: UTF-8 / utf8mb4 (fim dos acentos quebrados no Windows).
@@ -51,7 +49,7 @@ Embora desenvolvido em **PHP procedural (mysqli)**, o projeto foi estruturado co
 - Padronização de validações e tratamento de erros.
 - Tratamento consistente de entrada (sanitização) e saída (escape).
 
-A base foi pensada para facilitar uma futura migração para uma arquitetura mais desacoplada (**MVC** ou **API-first / REST**), sem reescrever tudo do zero.
+A organização atual prioriza manutenção incremental sem alterar a arquitetura procedural da V2.
 
 ---
 
@@ -59,7 +57,7 @@ A base foi pensada para facilitar uma futura migração para uma arquitetura mai
 
 | Módulo        | Responsabilidade / O que faz                           |
 | ------------- | ------------------------------------------------------ |
-| Autenticação  | Controle de acesso por perfil (admin/recepção)         |
+| Autenticação  | Login e identificação de perfil (admin/recepção)       |
 | Clientes/Pets | CRUD completo com vínculo relacional 1:N               |
 | Serviços      | Gestão de preço, duração e categorização               |
 | Agenda        | Agendamento por data, controle de status e observações |
@@ -76,7 +74,7 @@ Fluxo típico: **Login → cadastro cliente → cadastro pet → agendamento →
 Principais avanços estruturais da v2 em relação à v1:
 
 - Correção definitiva de problemas de **encoding** (UTF-8/utf8mb4).
-- Substituição completa de queries vulneráveis por **prepared statements**.
+- Substituição de queries com entrada variável por **prepared statements**.
 - Proteção contra **XSS** via escape consistente de saída (`htmlspecialchars()`).
 - Gestão de sessão mais segura (validação, regeneração e restrição de acesso).
 - Remoção de scripts sensíveis do ambiente público.
@@ -90,10 +88,10 @@ Em resumo, a v2 não é apenas “mais uma refatoração”, mas um **hardening 
 ## Segurança aplicada
 
 - **Senhas**: `password_hash()` + `password_verify()` (bcrypt).
-- **Banco de dados**: prepared statements em todas as interações (mysqli).
+- **Banco de dados**: prepared statements em consultas que recebem dados do usuário.
 - **Saída HTML**: `htmlspecialchars()` para evitar XSS em campos exibidos.
-- **Soft-delete** para preservar histórico sem quebrar integridade relacional.
-- **Controle de acesso baseado em sessão** (admin x recepção, bloqueio sem login).
+- **Soft-delete** em clientes, pets e serviços para preservar vínculos históricos.
+- **Controle de acesso baseado em sessão**, com bloqueio de páginas internas sem login.
 
 O foco é reduzir os vetores clássicos de ataque em aplicações PHP tradicionais: SQL Injection, XSS, exposição de scripts sensíveis e sessões frágeis.
 
@@ -115,9 +113,9 @@ Ambiente alvo de desenvolvimento: Windows + XAMPP.
 
 URL padrão após instalação:
 
-````text
+```text
 http://localhost/Petshopsystemv2/
-``
+```
 
 <details>
   <summary><strong>Passo a passo completo</strong></summary>
@@ -127,7 +125,7 @@ http://localhost/Petshopsystemv2/
 2. **Copie o projeto** para a pasta do servidor (PowerShell como Administrador):
 
 	```powershell
-	Copy-Item "C:\Users\User\Desktop\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
+	Copy-Item ".\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
 	```
 
 3. **Crie o banco de dados e importe o SQL** (via phpMyAdmin ou CLI):
@@ -146,8 +144,8 @@ http://localhost/Petshopsystemv2/
 
 4. **Ajuste as configurações se necessário**:
 
-	- `config/database.php` — `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME`.
-	- `config/config.php` — `BASE_URL` (padrão: `http://localhost/Petshopsystemv2/`).
+	- Em desenvolvimento, os valores padrão funcionam com XAMPP e MySQL sem senha.
+	- Em hospedagem, configure `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME` e `BASE_URL` como variáveis de ambiente.
 
 5. **Inicie Apache e MySQL** no XAMPP Control Panel.
 6. **Acesse no navegador**: `http://localhost/Petshopsystemv2/`.
@@ -161,8 +159,8 @@ http://localhost/Petshopsystemv2/
 Para validar rapidamente a conexão com o banco e a estrutura básica:
 
 ```powershell
-& php "C:\xampp\htdocs\Petshopsystemv2\scripts\test_db.php"
-````
+& php ".\scripts\dev\test_db.php"
+```
 
 No navegador, recomenda-se o seguinte fluxo mínimo de teste para extrair totalmente o projeto:
 
@@ -173,6 +171,12 @@ No navegador, recomenda-se o seguinte fluxo mínimo de teste para extrair totalm
 - Alterar o status do atendimento: Agendado → Em Atendimento → Concluído.
 - Verificar o **dashboard** atualizando métricas.
 - Tentar acessar rotas internas sem login → deve ser bloqueado/redirecionado para login.
+
+O teste funcional automatizado pode ser executado em um banco isolado:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\scripts\dev\functional_test.ps1"
+```
 
 ---
 
@@ -186,12 +190,25 @@ Para ambiente produtivo, recomenda-se:
 - Considerar **containerização com Docker** para padronizar ambiente.
 - Utilizar banco de dados gerenciado (evitando uso de `root` em produção).
 
+### Configuração na hospedagem
+
+Configure as variáveis `BASE_URL`, `DB_HOST`, `DB_USER`, `DB_PASS` e `DB_NAME`
+no painel da hospedagem. O arquivo `.env.example` serve apenas como referência;
+esta aplicação lê variáveis de ambiente disponibilizadas pelo servidor PHP.
+Se o provedor não oferecer variáveis de ambiente, configure esses valores
+diretamente nos arquivos de configuração durante o deploy e não versione as
+credenciais reais.
+
+Não publique `scripts/`, `sql/` ou credenciais reais em uma pasta acessível pela
+web. Em servidores Apache, o `.htaccess` incluído bloqueia o acesso direto a
+essas pastas. Após importar o banco, altere as senhas dos usuários demonstrativos.
+
 ---
 
 ## Roadmap (evoluções futuras)
 
 - API REST para desacoplamento frontend/backend.
-- Controle granular de permissões (RBAC).
+- Controle granular de permissões (RBAC) e administração de usuários.
 - Logs estruturados para auditoria e rastreabilidade avançada.
 - Versionamento de serviços e preços.
 - Rotina de backup automatizado.

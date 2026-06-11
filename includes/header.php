@@ -65,16 +65,6 @@
                     </a>
                 </li>
 
-                <?php if (isAdmin()): ?>
-                <li>
-                    <a href="<?php echo BASE_URL; ?>pages/usuarios.php"
-                        class="<?php echo (basename($_SERVER['PHP_SELF']) == 'usuarios.php') ? 'active' : ''; ?>">
-                        <i class="fas fa-user-shield"></i>
-                        <span>Usuarios</span>
-                    </a>
-                </li>
-                <?php endif; ?>
-
                 <li>
                     <a href="<?php echo BASE_URL; ?>pages/logout.php">
                         <i class="fas fa-sign-out-alt"></i>
@@ -95,11 +85,11 @@
                 <div class="topbar-right">
                     <div class="user-info">
                         <div class="user-avatar">
-                            <?php echo strtoupper(substr($_SESSION['user_name'], 0, 1)); ?>
+                            <?php echo e(strtoupper(substr($_SESSION['user_name'], 0, 1))); ?>
                         </div>
                         <div class="user-details">
-                            <span class="user-name"><?php echo $_SESSION['user_name']; ?></span>
-                            <span class="user-role"><?php echo ucfirst($_SESSION['user_role']); ?></span>
+                            <span class="user-name"><?php echo e($_SESSION['user_name']); ?></span>
+                            <span class="user-role"><?php echo e(ucfirst($_SESSION['user_role'])); ?></span>
                         </div>
                     </div>
                 </div>

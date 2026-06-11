@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 checkLogin();
 
 $page_title = 'Gerenciar Pets';
@@ -9,6 +9,7 @@ $error = '';
 
 // Acoes do CRUD feito
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verifyCsrf();
     $action = $_POST['action'] ?? '';
     
     if ($action === 'create' || $action === 'update') {
@@ -18,14 +19,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $raca = cleanInput($_POST['raca']);
         $sexo = cleanInput($_POST['sexo']);
         $cor = cleanInput($_POST['cor']);
-        $data_nascimento = cleanInput($_POST['data_nascimento']);
-        $peso = floatval($_POST['peso']);
+        $data_nascimento = nullableInput($_POST['data_nascimento'] ?? null);
+        $peso_input = nullableInput($_POST['peso'] ?? null);
+        $peso = $peso_input === null ? null : filter_var($peso_input, FILTER_VALIDATE_FLOAT);
         $observacoes = cleanInput($_POST['observacoes']);
+        $especies = ['Cachorro', 'Gato', 'Passaro', 'Roedor', 'Reptil', 'Outro'];
+        $sexos = ['Macho', 'Femea'];
         
         if (empty($nome) || empty($cliente_id) || empty($especie) || empty($sexo)) {
             $error = 'Nome, cliente, especie e sexo sao obrigatorios.';
+        } elseif (!in_array($especie, $especies, true) || !in_array($sexo, $sexos, true)) {
+            $error = 'Especie ou sexo invalido.';
+        } elseif ($data_nascimento !== null && (!isValidDate($data_nascimento) || $data_nascimento > date('Y-m-d'))) {
+            $error = 'Data de nascimento invalida.';
+        } elseif ($peso === false || ($peso !== null && $peso < 0)) {
+            $error = 'Peso invalido.';
         } else {
             $conn = getConnection();
+            $ownerStmt = $conn->prepare("SELECT id FROM clientes WHERE id = ? AND ativo = 1");
+            $ownerStmt->bind_param("i", $cliente_id);
+            $ownerStmt->execute();
+            $ownerExists = $ownerStmt->get_result()->num_rows === 1;
+            $ownerStmt->close();
+
+            if (!$ownerExists) {
+                $error = 'Cliente selecionado nao esta disponivel.';
+                $conn->close();
+            } else {
             
             if ($action === 'create') {
                 $stmt = $conn->prepare("INSERT INTO pets (cliente_id, nome, especie, raca, sexo, cor, data_nascimento, peso, observacoes) 
@@ -52,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $stmt->close();
             $conn->close();
+            }
         }
     } elseif ($action === 'delete') {
         $id = intval($_POST['id']);
@@ -188,9 +209,9 @@ include '../includes/header.php';
             <tr>
                 <td><strong><?php echo htmlspecialchars($pet['nome']); ?></strong></td>
                 <td><?php echo htmlspecialchars($pet['cliente_nome']); ?></td>
-                <td><span class="badge badge-info"><?php echo $pet['especie']; ?></span></td>
+                <td><span class="badge badge-info"><?php echo e($pet['especie']); ?></span></td>
                 <td><?php echo htmlspecialchars($pet['raca']); ?></td>
-                <td><?php echo $pet['sexo']; ?></td>
+                <td><?php echo e($pet['sexo']); ?></td>
                 <td>
                     <?php 
                     if (!empty($pet['data_nascimento'])) {
@@ -205,11 +226,12 @@ include '../includes/header.php';
                 </td>
                 <td>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" onclick='editPet(<?php echo json_encode($pet); ?>)'>
+                        <button class="btn btn-sm btn-info" onclick='editPet(<?php echo json_encode($pet, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>
                             <i class="fas fa-edit"></i>
                         </button>
                         <form method="POST" style="display: inline;"
                             onsubmit="return confirmDelete('Tem certeza que deseja excluir este pet?')">
+                            <?php echo csrfField(); ?>
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $pet['id']; ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -241,6 +263,7 @@ include '../includes/header.php';
             </div>
 
             <form method="POST" id="petForm">
+                <?php echo csrfField(); ?>
                 <input type="hidden" name="action" id="formAction" value="create">
                 <input type="hidden" name="id" id="petId">
 

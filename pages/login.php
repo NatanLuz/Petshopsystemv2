@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 
 // Se ja esta logado, vai ser redirecionado
 if (isset($_SESSION['user_id'])) {
@@ -11,8 +11,9 @@ if (isset($_SESSION['user_id'])) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = cleanInput($_POST['email']);
-    $senha = $_POST['senha'];
+    verifyCsrf();
+    $email = filter_var(cleanInput($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
+    $senha = $_POST['senha'] ?? '';
     
     if (empty($email) || empty($senha)) {
         $error = 'Por favor, preencha todos os campos.';
@@ -28,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if (password_verify($senha, $user['senha'])) {
                 // Login bem-sucedido
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['nome'];
                 $_SESSION['user_email'] = $user['email'];
@@ -74,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="POST" class="login-form">
+                <?php echo csrfField(); ?>
                 <div class="form-group">
                     <label for="email">
                         <i class="fas fa-envelope"></i> Email

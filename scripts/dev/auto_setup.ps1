@@ -5,14 +5,14 @@ Automatiza: copia da pasta do projeto para htdocs (se necessario) e importa o ar
 Uso (PowerShell):
   - Abra o PowerShell como Administrador
   - Executar:
-      powershell -ExecutionPolicy Bypass -File "C:\Users\User\Desktop\Petshopsystemv2\scripts\auto_setup.ps1"
+      powershell -ExecutionPolicy Bypass -File ".\scripts\dev\auto_setup.ps1"
 
 Parametros opcionais (editar no topo do arquivo ou passar via -SourcePath):
   -SourcePath, -TargetRoot, -DbName, -MysqlExe, -MysqlUser, -MysqlPass
 #>
 
 param(
-    [string]$SourcePath = "C:\Users\User\Desktop\Petshopsystemv2",
+    [string]$SourcePath = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,
     [string]$TargetRoot = "C:\xampp\htdocs",
     [string]$DbName = "petshop_system",
     [string]$MysqlExe = "C:\xampp\mysql\bin\mysql.exe",
@@ -57,33 +57,25 @@ if (-not (Test-Path $sqlFile)) {
 Write-Info "3) Criando banco (se necessario) e importando dados: $DbName"
 
 # Monta flags de autenticacao
-$authFlags = "-u $MysqlUser"
-if ($MysqlPass -ne "") { $authFlags += " -p$MysqlPass" }
+$authArgs = @('-u', $MysqlUser)
+if ($MysqlPass -ne "") { $authArgs += "-p$MysqlPass" }
 
 # Cria banco (com cmd.exe para facilitar a citacao)
-$createCmd = '"' + $MysqlExe + '" ' + $authFlags + ' -e "CREATE DATABASE IF NOT EXISTS ' + $DbName + ' CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"'
 Write-Info "Executando criacao do banco..."
-cmd.exe /c $createCmd
+& $MysqlExe @authArgs -e "CREATE DATABASE IF NOT EXISTS ``$DbName`` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 if ($LASTEXITCODE -ne 0) {
     Write-Err "Falha ao criar banco. Codigo de saida: $LASTEXITCODE"
     exit 4
 }
 
-# Importa via pipe (PowerShell) para evitar problemas com redirecionamento
 Write-Info "Importando SQL: isso pode demorar alguns segundos..."
 try {
-    $sql = Get-Content $sqlFile -Raw
-    $proc = Start-Process -FilePath $MysqlExe -ArgumentList @($authFlags, $DbName) -NoNewWindow -PassThru -RedirectStandardInput "PIPE" -RedirectStandardOutput "PIPE" -RedirectStandardError "PIPE"
-    $proc.StandardInput.Write($sql)
-    $proc.StandardInput.Close()
-    $stdOut = $proc.StandardOutput.ReadToEnd()
-    $stdErr = $proc.StandardError.ReadToEnd()
-    $proc.WaitForExit()
-    if ($proc.ExitCode -eq 0) {
+    Get-Content -LiteralPath $sqlFile -Raw | & $MysqlExe @authArgs $DbName
+    if ($LASTEXITCODE -eq 0) {
         Write-Ok "Importacao finalizada com sucesso."
     } else {
-        Write-Err "Import falhou (exit $($proc.ExitCode)). Mensagem: $stdErr"
+        Write-Err "Import falhou (exit $LASTEXITCODE)."
         exit 5
     }
 } catch {

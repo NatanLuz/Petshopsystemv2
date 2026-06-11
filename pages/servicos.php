@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 checkLogin();
 
 $page_title = 'Gerenciar Servicos';
@@ -9,6 +9,7 @@ $error = '';
 
 // Acoes de CRUD
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verifyCsrf();
     $action = $_POST['action'] ?? '';
     
     if ($action === 'create' || $action === 'update') {
@@ -18,8 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $duracao_minutos = intval($_POST['duracao_minutos']);
         $categoria = cleanInput($_POST['categoria']);
         
+        $categorias = ['Banho e Tosa', 'Veterinario', 'Vacina', 'Consulta', 'Cirurgia', 'Hospedagem', 'Outro'];
+
         if (empty($nome) || $preco <= 0) {
             $error = 'Nome e preco sao obrigatorios.';
+        } elseif ($duracao_minutos <= 0) {
+            $error = 'A duracao deve ser maior que zero.';
+        } elseif (!in_array($categoria, $categorias, true)) {
+            $error = 'Categoria invalida.';
         } else {
             $conn = getConnection();
             
@@ -177,15 +184,16 @@ include '../includes/header.php';
                         <br><small style="color: #858796;"><?php echo htmlspecialchars($servico['descricao']); ?></small>
                     <?php endif; ?>
                 </td>
-                <td><span class="badge badge-info"><?php echo $servico['categoria']; ?></span></td>
+                <td><span class="badge badge-info"><?php echo e($servico['categoria']); ?></span></td>
                 <td><?php echo $servico['duracao_minutos']; ?> min</td>
                 <td><strong><?php echo formatMoney($servico['preco']); ?></strong></td>
                 <td>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" onclick='editServico(<?php echo json_encode($servico); ?>)'>
+                        <button class="btn btn-sm btn-info" onclick='editServico(<?php echo json_encode($servico, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>
                             <i class="fas fa-edit"></i>
                         </button>
                         <form method="POST" style="display: inline;" onsubmit="return confirmDelete('Tem certeza que deseja excluir este servico?')">
+                            <?php echo csrfField(); ?>
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $servico['id']; ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -215,6 +223,7 @@ include '../includes/header.php';
             </div>
             
             <form method="POST" id="servicoForm">
+                <?php echo csrfField(); ?>
                 <input type="hidden" name="action" id="formAction" value="create">
                 <input type="hidden" name="id" id="servicoId">
                 

@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 checkLogin();
 
 $page_title = 'Gerenciar Clientes';
@@ -9,14 +9,15 @@ $error = '';
 
 // Acoes de CRUD
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verifyCsrf();
     $action = $_POST['action'] ?? '';
     
     if ($action === 'create' || $action === 'update') {
         $nome = cleanInput($_POST['nome']);
-        $email = cleanInput($_POST['email']);
+        $email = nullableInput($_POST['email'] ?? null);
         $telefone = cleanInput($_POST['telefone']);
         $celular = cleanInput($_POST['celular']);
-        $cpf = cleanInput($_POST['cpf']);
+        $cpf = nullableInput($_POST['cpf'] ?? null);
         $endereco = cleanInput($_POST['endereco']);
         $bairro = cleanInput($_POST['bairro']);
         $cidade = cleanInput($_POST['cidade']);
@@ -24,8 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cep = cleanInput($_POST['cep']);
         $observacoes = cleanInput($_POST['observacoes']);
         
+        $estados = ['', 'SP', 'RJ', 'MG', 'ES', 'PR', 'SC', 'RS', 'BA', 'PE', 'CE', 'RN', 'PB', 'AL', 'SE', 'PA', 'AM', 'RR', 'AP', 'TO', 'DF', 'AC', 'RO', 'MT', 'MS'];
+
         if (empty($nome) || empty($telefone)) {
             $error = 'Nome e telefone sao obrigatorios.';
+        } elseif ($email !== null && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error = 'Informe um email valido.';
+        } elseif (!in_array($estado, $estados, true)) {
+            $error = 'Estado invalido.';
         } else {
             $conn = getConnection();
             
@@ -154,11 +161,12 @@ include '../includes/header.php';
                 <td><?php echo htmlspecialchars($cliente['cidade'] . '/' . $cliente['estado']); ?></td>
                 <td>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" onclick='editCliente(<?php echo json_encode($cliente); ?>)'>
+                        <button class="btn btn-sm btn-info" onclick='editCliente(<?php echo json_encode($cliente, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>
                             <i class="fas fa-edit"></i>
                         </button>
                         <form method="POST" style="display: inline;"
                             onsubmit="return confirmDelete('Tem certeza que deseja excluir este cliente?')">
+                            <?php echo csrfField(); ?>
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>">
                             <button type="submit" class="btn btn-sm btn-danger">
@@ -190,6 +198,7 @@ include '../includes/header.php';
             </div>
 
             <form method="POST" id="clienteForm">
+                <?php echo csrfField(); ?>
                 <input type="hidden" name="action" id="formAction" value="create">
                 <input type="hidden" name="id" id="clienteId">
 
@@ -273,8 +282,6 @@ include '../includes/header.php';
                             <option value="RO">RO</option>
                             <option value="MT">MT</option>
                             <option value="MS">MS</option>
-                            </option>
-
                         </select>
                     </div>
                 </div>

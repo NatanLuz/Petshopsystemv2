@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../config/config.php';
+startSecureSession();
 checkLogin();
 
 $page_title = 'Dashboard';
@@ -31,7 +31,7 @@ $faturamento_mes = $result->fetch_assoc()['total'] ?? 0;
  $result = $conn->query("SELECT p.especie, COUNT(*) as total 
                         FROM atendimentos a 
                         JOIN pets p ON a.pet_id = p.id 
-                        WHERE a.data_atendimento >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+                        WHERE a.data_atendimento BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE()
                         GROUP BY p.especie
                         ORDER BY total DESC");
 $atendimentos_especie = [];
@@ -43,7 +43,7 @@ while ($row = $result->fetch_assoc()) {
 $result = $conn->query("SELECT s.nome, COUNT(*) as total 
                         FROM atendimentos a 
                         JOIN servicos s ON a.servico_id = s.id 
-                        WHERE a.data_atendimento >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+                        WHERE a.data_atendimento BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE()
                         GROUP BY s.id
                         ORDER BY total DESC
                         LIMIT 5");
@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
 // Faturamento dos ultimos 7 dias 
  $result = $conn->query("SELECT DATE(data_atendimento) as data, SUM(valor) as total 
                         FROM atendimentos 
-                        WHERE data_atendimento >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
+                        WHERE data_atendimento BETWEEN DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND CURDATE()
                         AND status = 'Concluido'
                         GROUP BY DATE(data_atendimento)
                         ORDER BY data");
@@ -189,7 +189,7 @@ include '../includes/header.php';
                     </td>
                     <td><?php echo htmlspecialchars($atendimento['cliente_nome']); ?></td>
                     <td><?php echo htmlspecialchars($atendimento['pet_nome']); ?>
-                        (<?php echo $atendimento['especie']; ?>)</td>
+                        (<?php echo e($atendimento['especie']); ?>)</td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if (empty($proximos_atendimentos)): ?>

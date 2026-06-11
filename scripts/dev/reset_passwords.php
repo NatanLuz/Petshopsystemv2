@@ -4,7 +4,7 @@
 // recepcao@petshop.com => recepcao123
 
 header('Content-Type: text/plain; charset=UTF-8');
-$root = dirname(__DIR__);
+$root = dirname(__DIR__, 2);
 require_once $root . '/config/config.php';
 
 try {
