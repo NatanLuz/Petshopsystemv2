@@ -101,7 +101,7 @@ O foco é reduzir os vetores clássicos de ataque em aplicações PHP tradiciona
 
 ## Stack técnico
 
-- **Backend**: PHP (procedural, mysqli)
+- **Backend**: PHP (mysqli)
 - **Banco de dados**: MySQL / MariaDB (utf8mb4)
 - **Frontend**: HTML5, CSS3, Javascript & Chart.js
 - **Ícones/UI**: Font Awesome
