@@ -8,7 +8,7 @@ A Versão v2 do projeto é a evolução direta da primeira versão do projeto e 
 
 - Robustez e também previsibilidade operacional
 - Segurança aplicada de forma consistente
-- Melhoria do fluxo da recepção (menos cliques, mais resultado)
+- Melhoria do fluxo da recepção
 
 O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema para operar de forma confiável em ambiente real**: fluxo rápido, rastreável e sem dores de cabeça.
 
