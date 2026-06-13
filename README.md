@@ -14,7 +14,7 @@ O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema p
 
 ---
 
-## Proposta do Projeto 
+## Objetivo do Projeto 
 
 Este sistema atua diretamente em três frentes críticas do negócio:
 
