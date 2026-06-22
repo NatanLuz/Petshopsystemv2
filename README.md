@@ -1,247 +1,416 @@
-## Pet Shop System (v2) — Sistema de Agendamento e Gestão Operacional (PARA PETSHOPS  E CLÍNICAS)
+# Pet Shop System V2
 
-![Status](https://img.shields.io/badge/Status-Completo-success) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue) ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange) ![License](https://img.shields.io/badge/License-MIT-green)
+Sistema web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
 
-Construí um sistema de agendamento e gestão desenvolvido tanto para petshops quanto para clínicas veterinárias que enfrentam problemas recorrentes como conflitos de agenda, perda de histórico de clientes/pets e inconsistências no controle financeiro.
+![Status](https://img.shields.io/badge/Status-Completo-success)
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)
+![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-A Versão v2 do projeto é a evolução direta da primeira versão do projeto e foca em:
+## Status do Projeto
 
-- Robustez e também previsibilidade operacional
-- Segurança aplicada de forma consistente
-- Melhoria do fluxo da recepção
+A **V2 está estável e finalizada**.
 
-O objetivo não foi apenas “refatorar código”, mas **estruturar o sistema para operar de forma confiável em ambiente real**: fluxo rápido, rastreável e sem dores de cabeça.
+## Objetivo do Projeto
 
----
+O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos fictícios e sanitizados para preservar a privacidade dos dados originais.
 
-## Objetivo do Projeto 
+O projeto está preparado para:
 
-Este sistema atua diretamente em três frentes críticas do negócio:
+- apresentação em portfólio;
+- publicação no GitHub;
+- execução local com XAMPP;
+- configuração futura em ambiente de hospedagem.
 
-- **Organização operacional** — agenda estruturada com controle de status e prevenção de inconsistências.
-- **Rastreabilidade** — histórico consolidado por cliente e pet, com registro completo de atendimentos.
-- **Visão gerencial simplificada** — métricas essenciais para controle financeiro e tomada de decisão.
+## Demonstração Online
 
-Toda a solução foi pensada para a rotina da recepção do petshop: **fluxo de check-in direto (cliente → pet → serviço)**, menos fricção, menos telas desnecessárias e maior previsibilidade no dia a dia.
+> Demonstração online ainda não está disponível.
 
----
+Quando o deploy público for realizado, o acesso será publicado aqui:
 
-## Highlights da Versão 2 (V2)
+**URL:** Em breve
 
-- **Fluxo otimizado de check-in**: cliente → pet → serviço, sem enrolação.
-- **Controle de estado do atendimento**: Agendado → Em Atendimento → Concluído.
-- **Hardening de segurança**: `password_hash()`/`password_verify()` (bcrypt) + prepared statements em consultas com entrada variável.
-- **Scripts automatizados** para instalação local e verificação de integridade do ambiente.
-- **Dashboard operacional** com indicadores e gráficos via Chart.js.
-- **Padronização de encoding**: UTF-8 / utf8mb4 (fim dos acentos quebrados no Windows).
+Enquanto isso, o projeto pode ser executado localmente seguindo as instruções de instalação.
 
-Projeto desenvolvido e utilizado em **petshop real e clinica veterinaria**, com versão pública sanitizada para preservar privacidade.
+## Problema Resolvido
 
----
+A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
 
-## Arquitetura e estrutura técnica do projeto
+Quando essas informações são controladas de forma fragmentada, surgem problemas como:
 
-Embora desenvolvido em **PHP procedural (mysqli)**, o projeto foi estruturado com foco em clareza e evolução futura:
+- dificuldade para localizar o histórico de clientes e pets;
+- perda de informações sobre atendimentos;
+- falta de padronização nos status da agenda;
+- baixa visibilidade sobre serviços realizados e faturamento;
+- excesso de etapas durante o atendimento na recepção.
 
-- Separação clara de responsabilidades por módulo.
-- Organização modular de pastas (config, módulos, views, scripts, SQL).
-- Camada de configuração isolada para ambiente/banco.
-- Padronização de validações e tratamento de erros.
-- Tratamento consistente de entrada (sanitização) e saída (escape).
+O Pet Shop System V2 centraliza essas operações em um único sistema, com um fluxo direto:
 
-A organização atual prioriza manutenção incremental sem alterar a arquitetura procedural da V2.
+**cliente → pet → serviço → atendimento → acompanhamento no dashboard**
 
----
+## Principais Funcionalidades
 
-## Funcionalidades principais do projeto
+| Módulo | Funcionalidades |
+| --- | --- |
+| Autenticação | Login, logout e identificação dos perfis administrador e recepcionista |
+| Clientes | Cadastro, consulta, edição, pesquisa e desativação |
+| Pets | Cadastro vinculado ao cliente, edição, filtros e desativação |
+| Serviços | Cadastro de preço, duração, categoria, edição, filtros e desativação |
+| Atendimentos | Agendamento, edição, exclusão, observações e controle de status |
+| Dashboard | Indicadores operacionais, faturamento e gráficos |
+| Filtros | Pesquisa por texto, espécie, categoria, data e status |
+| Ferramentas de desenvolvimento | Scripts auxiliares para instalação, conexão e testes funcionais |
 
-| Módulo        | Responsabilidade / O que faz                           |
-| ------------- | ------------------------------------------------------ |
-| Autenticação  | Login e identificação de perfil (admin/recepção)       |
-| Clientes/Pets | CRUD completo com vínculo relacional 1:N               |
-| Serviços      | Gestão de preço, duração e categorização               |
-| Agenda        | Agendamento por data, controle de status e observações |
-| Dashboard     | Indicadores operacionais e gráficos (Chart.js)         |
-| Filtros       | Pesquisa por data, status e categoria                  |
-| Automação     | Scripts de setup e verificação de integridade          |
+Os atendimentos podem utilizar os seguintes status:
 
-Fluxo típico: **Login → cadastro cliente → cadastro pet → agendamento → atualização de status → acompanhamento no dashboard**.
+- Agendado;
+- Em Atendimento;
+- Concluído;
+- Cancelado.
 
----
+## Tecnologias Utilizadas
 
-## Evolução técnica — v1 → v2
+- **Backend:** PHP procedural
+- **Acesso ao banco:** MySQLi
+- **Banco de dados:** MySQL ou MariaDB
+- **Frontend:** HTML5, CSS3 e JavaScript
+- **Gráficos:** Chart.js
+- **Ícones:** Font Awesome
+- **Codificação:** UTF-8 e `utf8mb4`
+- **Ambiente local recomendado:** Windows com XAMPP
+- **Servidor web:** Apache
 
-Principais avanços estruturais da v2 em relação à v1:
+## Segurança Aplicada
 
-- Correção definitiva de problemas de **encoding** (UTF-8/utf8mb4).
-- Substituição de queries com entrada variável por **prepared statements**.
-- Proteção contra **XSS** via escape consistente de saída (`htmlspecialchars()`).
-- Gestão de sessão mais segura (validação, regeneração e restrição de acesso).
-- Remoção de scripts sensíveis do ambiente público.
-- README técnico estruturado com instruções **reproduzíveis** e testes claros.
-- Redução significativa da dívida técnica acumulada na v1.
+A V2 inclui medidas de segurança adequadas ao contexto de uma aplicação PHP tradicional:
 
-Em resumo, a v2 não é apenas “mais uma refatoração”, mas um **hardening completo da base** para uso real.
+- armazenamento de senhas com `password_hash()`;
+- validação de senhas com `password_verify()`;
+- consultas preparadas para entradas variáveis;
+- escape de saída HTML com `htmlspecialchars()`;
+- tokens CSRF nos formulários;
+- comparação segura de tokens com `hash_equals()`;
+- regeneração do identificador da sessão após o login;
+- cookies de sessão com `HttpOnly` e `SameSite=Lax`;
+- modo estrito de sessão;
+- bloqueio de páginas internas para usuários não autenticados;
+- desativação lógica de clientes, pets e serviços;
+- mensagens de erro de banco sem exposição direta de credenciais;
+- bloqueio de acesso web às pastas `config`, `scripts` e `sql` pelo `.htaccess`;
+- cabeçalhos HTTP básicos de proteção no Apache.
 
----
+Em produção, o atributo `Secure` do cookie de sessão é ativado quando a aplicação é acessada por HTTPS.
 
-## Segurança aplicada
+> As medidas existentes reduzem riscos comuns, como SQL Injection, XSS, CSRF, exposição de arquivos internos e uso inseguro de sessões. Elas não substituem a configuração segura do servidor e da hospedagem.
 
-- **Senhas**: `password_hash()` + `password_verify()` (bcrypt).
-- **Banco de dados**: prepared statements em consultas que recebem dados do usuário.
-- **Saída HTML**: `htmlspecialchars()` para evitar XSS em campos exibidos.
-- **Soft-delete** em clientes, pets e serviços para preservar vínculos históricos.
-- **Controle de acesso baseado em sessão**, com bloqueio de páginas internas sem login.
-
-O foco é reduzir os vetores clássicos de ataque em aplicações PHP tradicionais: SQL Injection, XSS, exposição de scripts sensíveis e sessões frágeis.
-
----
-
-## Stack técnico
-
-- **Backend**: PHP (mysqli)
-- **Banco de dados**: MySQL / MariaDB (utf8mb4)
-- **Frontend**: HTML5, CSS3, Javascript & Chart.js
-- **Ícones/UI**: Font Awesome
-- **Ambiente de desenvolvimento recomendado**: XAMPP (Windows)
-
----
-
-## Instalação (local — Windows / XAMPP)
-
-Ambiente alvo de desenvolvimento: Windows + XAMPP.
-
-URL padrão após instalação:
+## Estrutura do Projeto
 
 ```text
-http://localhost/Petshopsystemv2/
+Petshopsystemv2/
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── main.js
+├── config/
+│   ├── config.php
+│   └── database.php
+├── includes/
+│   ├── footer.php
+│   └── header.php
+├── pages/
+│   ├── atendimentos.php
+│   ├── clientes.php
+│   ├── dashboard.php
+│   ├── login.php
+│   ├── logout.php
+│   ├── pets.php
+│   └── servicos.php
+├── scripts/
+│   └── dev/
+│       ├── auto_setup.ps1
+│       ├── functional_test.ps1
+│       ├── reset_passwords.php
+│       └── test_db.php
+├── sql/
+│   └── database.sql
+├── .env.example
+├── .htaccess
+├── index.php
+└── README.md
 ```
 
-<details>
-  <summary><strong>Passo a passo completo</strong></summary>
+### Responsabilidades principais
 
-1. **Pare o Apache/MySQL** no XAMPP Control Panel.
+- `assets/`: estilos e scripts da interface;
+- `config/`: configurações gerais, sessão e conexão com o banco;
+- `includes/`: componentes compartilhados da interface;
+- `pages/`: módulos funcionais da aplicação;
+- `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
+- `sql/`: estrutura do banco e dados demonstrativos.
 
-2. **Copie o projeto** para a pasta do servidor (PowerShell como Administrador):
+## Instalação
 
-	```powershell
-	Copy-Item ".\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
-	```
+### Requisitos
 
-3. **Crie o banco de dados e importe o SQL** (via phpMyAdmin ou CLI):
+- PHP 7.4 ou superior;
+- MySQL 5.7+, MariaDB ou versão compatível;
+- Apache;
+- extensão MySQLi habilitada;
+- XAMPP recomendado para execução local no Windows.
 
-	- Via phpMyAdmin: acesse `http://localhost/phpmyadmin` → *New* → crie o banco `petshop_system` em **utf8mb4** → aba *Import* → selecione `sql/database.sql`.
+### Instalação local com XAMPP
 
-	- Via CLI (PowerShell, usando `cmd.exe` para redirecionamento):
+1. Clone o repositório ou copie o projeto para o diretório do Apache:
 
-	  ```powershell
-	  cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root -e "CREATE DATABASE IF NOT EXISTS petshop_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"'
+   ```powershell
+   Copy-Item ".\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
+   ```
 
-	  cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\htdocs\Petshopsystemv2\sql\database.sql"'
-	  ```
+2. Inicie o Apache e o MySQL pelo XAMPP Control Panel.
 
-	  > Se o usuário `root` tiver senha, adicione `-p` e informe a senha quando solicitado.
+3. Crie e configure o banco conforme a seção seguinte.
 
-4. **Ajuste as configurações se necessário**:
+4. Acesse:
 
-	- Em desenvolvimento, os valores padrão funcionam com XAMPP e MySQL sem senha.
-	- Em hospedagem, configure `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME` e `BASE_URL` como variáveis de ambiente.
+   ```text
+   http://localhost/Petshopsystemv2/
+   ```
 
-5. **Inicie Apache e MySQL** no XAMPP Control Panel.
-6. **Acesse no navegador**: `http://localhost/Petshopsystemv2/`.
+### Configuração para deploy futuro
 
-</details>
+A aplicação aceita as seguintes variáveis de ambiente:
 
----
+```env
+APP_ENV=production
+BASE_URL=https://seu-dominio.example/
+DB_HOST=localhost
+DB_USER=seu_usuario
+DB_PASS=sua_senha
+DB_NAME=seu_banco
+```
 
-## Testes rápidos (sanidade do ambiente)
+O arquivo `.env.example` funciona como referência. A aplicação lê as variáveis disponibilizadas pelo ambiente do servidor PHP; ela não carrega automaticamente um arquivo `.env`.
 
-Para validar rapidamente a conexão com o banco e a estrutura básica:
+Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente nos arquivos de configuração durante o deploy e não versione as credenciais reais.
+
+Antes de publicar:
+
+- utilize HTTPS;
+- use um usuário de banco dedicado, sem privilégios de administrador;
+- configure corretamente a `BASE_URL`;
+- não publique credenciais reais;
+- altere as senhas dos usuários demonstrativos;
+- mantenha `config/`, `scripts/` e `sql/` fora do acesso público;
+- confirme que as regras do `.htaccess` são respeitadas pelo servidor;
+- desative a listagem de diretórios;
+- mantenha logs, backups, sessões e arquivos temporários fora do repositório.
+
+## Configuração do Banco
+
+### Importação pelo phpMyAdmin
+
+1. Acesse `http://localhost/phpmyadmin`.
+2. Crie o banco `petshop_system`.
+3. Utilize codificação `utf8mb4`.
+4. Abra a aba **Importar**.
+5. Selecione:
+
+   ```text
+   sql/database.sql
+   ```
+
+6. Execute a importação.
+
+### Importação pela linha de comando
+
+No PowerShell:
+
+```powershell
+cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root -e "CREATE DATABASE IF NOT EXISTS petshop_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"'
+
+cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\htdocs\Petshopsystemv2\sql\database.sql"'
+```
+
+Caso o usuário MySQL possua senha, adicione `-p` e informe a senha quando solicitado.
+
+### Configuração padrão para desenvolvimento
+
+A configuração local padrão utiliza:
+
+```text
+Host: localhost
+Usuário: root
+Senha: vazia
+Banco: petshop_system
+```
+
+Esses valores podem ser substituídos pelas variáveis:
+
+- `DB_HOST`;
+- `DB_USER`;
+- `DB_PASS`;
+- `DB_NAME`;
+- `BASE_URL`;
+- `APP_ENV`.
+
+### Usuários demonstrativos
+
+O banco público inclui contas fictícias para avaliação local:
+
+| Perfil | E-mail | Senha |
+| --- | --- | --- |
+| Administrador | `admin@petshop.com` | `admin123` |
+| Recepcionista | `recepcao@petshop.com` | `recepcao123` |
+
+> Essas credenciais são exclusivamente demonstrativas. Altere ou remova essas contas antes de disponibilizar a aplicação publicamente.
+
+## Testes
+
+### Verificação da conexão
+
+Para verificar a conexão e a existência das tabelas obrigatórias:
 
 ```powershell
 & php ".\scripts\dev\test_db.php"
 ```
 
-No navegador, recomenda-se o seguinte fluxo mínimo de teste para extrair totalmente o projeto:
+Caso o PHP não esteja disponível no `PATH`, utilize:
 
-- Realizar login com usuário de teste.
-- Criar um **cliente**.
-- Criar um **pet** vinculado a esse cliente.
-- Criar um **agendamento** para o pet.
-- Alterar o status do atendimento: Agendado → Em Atendimento → Concluído.
-- Verificar o **dashboard** atualizando métricas.
-- Tentar acessar rotas internas sem login → deve ser bloqueado/redirecionado para login.
+```powershell
+& "C:\xampp\php\php.exe" ".\scripts\dev\test_db.php"
+```
 
-O teste funcional automatizado pode ser executado em um banco isolado:
+### Teste funcional automatizado
+
+O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
+
+- login como administrador;
+- login como recepcionista;
+- logout;
+- CRUD de clientes;
+- CRUD de pets;
+- CRUD de serviços;
+- CRUD de atendimentos;
+- dashboard;
+- filtros;
+- proteção CSRF;
+- bloqueio de páginas privadas;
+- atributos do cookie de sessão.
+
+Execute:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\scripts\dev\functional_test.ps1"
 ```
 
----
+Por padrão, o teste utiliza o banco:
 
-## Publicação e boas práticas
+```text
+petshop_system_v2_test
+```
 
-Para ambiente produtivo, recomenda-se:
+Crie esse banco e importe `sql/database.sql` antes da execução.
 
-- Remover **configurações sensíveis** do repositório (credenciais, senhas, etc.).
-- Usar um `.gitignore` adequado para evitar upload de arquivos transitórios/logs.
-- Isolar variáveis de ambiente (por exemplo, via `.env` ou mecanismo equivalente).
-- Considerar **containerização com Docker** para padronizar ambiente.
-- Utilizar banco de dados gerenciado (evitando uso de `root` em produção).
+> Execute o teste funcional apenas em um banco isolado. O script cria, altera e remove registros durante a validação.
 
-### Configuração na hospedagem
+### Verificação manual recomendada
 
-Configure as variáveis `BASE_URL`, `DB_HOST`, `DB_USER`, `DB_PASS` e `DB_NAME`
-no painel da hospedagem. O arquivo `.env.example` serve apenas como referência;
-esta aplicação lê variáveis de ambiente disponibilizadas pelo servidor PHP.
-Se o provedor não oferecer variáveis de ambiente, configure esses valores
-diretamente nos arquivos de configuração durante o deploy e não versione as
-credenciais reais.
+1. Entre com um usuário demonstrativo.
+2. Cadastre um cliente.
+3. Cadastre um pet vinculado ao cliente.
+4. Cadastre ou selecione um serviço.
+5. Crie um atendimento.
+6. Atualize o status do atendimento.
+7. Confira os indicadores no dashboard.
+8. Teste os filtros dos módulos.
+9. Finalize a sessão.
+10. Tente acessar uma página interna sem login e confirme o redirecionamento.
 
-Não publique `scripts/`, `sql/` ou credenciais reais em uma pasta acessível pela
-web. Em servidores Apache, o `.htaccess` incluído bloqueia o acesso direto a
-essas pastas. Após importar o banco, altere as senhas dos usuários demonstrativos.
+## Screenshots
 
----
+### Dashboard
 
-## Roadmap (evoluções futuras)
+![Dashboard](Docs/images/Dashboard.PNG)
 
-- API REST para desacoplamento frontend/backend.
-- Controle granular de permissões (RBAC) e administração de usuários.
-- Logs estruturados para auditoria e rastreabilidade avançada.
-- Versionamento de serviços e preços.
-- Rotina de backup automatizado.
-- Integração com WhatsApp para confirmação de agendamentos.
-- Recursos com IA (previsão de demanda, sugestão de agenda inteligente, insights operacionais).
+### Login
 
----
+![Login](Docs/images/Login.PNG)
 
-## Screenshots (versão demonstrativa)
+### Clientes
 
-Clique nas imagens para visualizar em tamanho maior:
+![Clientes](Docs/images/Clientes.PNG)
 
-[![Atendimentos](https://i.postimg.cc/bSXKVmvF/atendimentos.png)](https://postimg.cc/bSXKVmvF)
-[![Clientes](https://i.postimg.cc/p5Ngcsd6/Clientes.png)](https://postimg.cc/p5Ngcsd6)
-[![Logado](https://i.postimg.cc/wRKS4wBr/logado-como-recepcionista.png)](https://postimg.cc/wRKS4wBr)
+### Novo Cliente
 
-[![Login](https://i.postimg.cc/64sDbMQF/Login.png)](https://postimg.cc/64sDbMQF)
-[![Login 2](https://i.postimg.cc/8f8qXZC2/Login2.png)](https://postimg.cc/8f8qXZC2)
-[![Novo Atendimento](https://i.postimg.cc/dZMzN51F/novo-atendimento.png)](https://postimg.cc/dZMzN51F)
+![Novo Cliente](Docs/images/NovoCliente.PNG)
 
-[![Novo Pet](https://i.postimg.cc/gL9ftgJm/novo-pet.png)](https://postimg.cc/gL9ftgJm)
-[![Novo Serviço](https://i.postimg.cc/Mfkh39Tz/novo-servico.png)](https://postimg.cc/Mfkh39Tz)
-[![Novo Cliente](https://i.postimg.cc/n986S3zV/novocliente.png)](https://postimg.cc/n986S3zV)
+### Pets
 
-[![Pet](https://i.postimg.cc/jnVG3M5S/petx.png)](https://postimg.cc/jnVG3M5S)
-[![Serviços](https://i.postimg.cc/ctqVkFHC/servicos.png)](https://postimg.cc/ctqVkFHC)
+![Pets](Docs/images/Pets.PNG)
 
----
+### Novo Pet
+
+![Novo Pet](Docs/images/NovoPet.PNG)
+
+### Serviços
+
+![Serviços](Docs/images/Servicos.PNG)
+
+### Novo Serviço
+
+![Novo Serviço](Docs/images/NovoServico.PNG)
+
+### Atendimentos
+
+![Atendimentos](Docs/images/Atendimentos.PNG)
+
+### Novo Atendimento
+
+![Novo Atendimento](Docs/images/NovoAtendimento.PNG)
+
+## Roadmap
+
+A V2 está finalizada. Os itens abaixo representam possibilidades para versões futuras e não fazem parte da implementação atual:
+
+- controle mais granular de permissões;
+- logs estruturados para auditoria;
+- rotina automatizada de backup;
+- versionamento de preços e serviços;
+- API REST para integrações externas;
+- notificações de agendamento;
+- containerização opcional do ambiente;
+- estudos de recursos de análise e previsão operacional.
+
+## Aprendizados Técnicos
+
+O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
+
+- organização modular sem substituição da arquitetura existente;
+- uso consistente de consultas preparadas;
+- proteção de formulários com tokens CSRF;
+- gerenciamento mais seguro de sessões;
+- escape de dados na saída HTML;
+- manutenção de relacionamentos entre clientes, pets e atendimentos;
+- uso de desativação lógica para preservar referências históricas;
+- padronização de banco e aplicação em UTF-8/`utf8mb4`;
+- separação entre código da aplicação e ferramentas de desenvolvimento;
+- criação de testes funcionais para os fluxos críticos;
+- sanitização de dados antes da publicação pública;
+- configuração da aplicação para ambientes diferentes por variáveis de ambiente.
+
+A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
 
 ## Autor
 
-- **Nome**: Natan Da Luz
-- **E-mail**: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
+**Natan Da Luz**
 
-Sistema desenvolvido para uso real em petshop local.  
-Todos os dados presentes na versão demonstrativa pública são fictícios, preservando a segurança e a privacidade do cliente real.
+- E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
+
+- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
+
+- Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
+
+Projeto desenvolvido com base em uma operação real de petshop.
+
+A versão pública utiliza exclusivamente dados demonstrativos fictícios, preservando a segurança e a privacidade dos dados originais.
