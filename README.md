@@ -149,11 +149,9 @@ Petshopsystemv2/
 - `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
 - `sql/`: estrutura do banco e dados demonstrativos.
 
-## Instalação
-
 ### Requisitos
 
-- PHP 7.4 ou superior;
+- PHP 7.4 ou superior(recomendado PHP superior para melhor execução);
 - MySQL 5.7+, MariaDB ou versão compatível;
 - Apache;
 - extensão MySQLi habilitada;
