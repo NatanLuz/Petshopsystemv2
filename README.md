@@ -20,17 +20,34 @@ O projeto está preparado para:
 - apresentação em portfólio;
 - publicação no GitHub;
 - execução local com XAMPP;
-- configuração futura em ambiente de hospedagem.
+- execução em ambiente de hospedagem configurado.
 
 ## Demonstração Online
 
-> Demonstração online ainda não está disponível.
+A aplicação encontra-se disponível publicamente para demonstração.
 
-Quando o deploy público for realizado, o acesso será publicado aqui:
+**URL:**
+[https://petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)
 
-**URL:** Em breve
+### Usuários de demonstração
 
-Enquanto isso, o projeto pode ser executado localmente seguindo as instruções de instalação.
+**Administrador**
+
+**Email:**
+[admin@petshop.com](mailto:admin@petshop.com)
+
+**Senha:**
+`admin123`
+
+**Recepcionista**
+
+**Email:**
+[recepcao@petshop.com](mailto:recepcao@petshop.com)
+
+**Senha:**
+`recepcao123`
+
+> Todas as informações exibidas na demonstração são fictícias.
 
 ## Problema Resolvido
 
@@ -38,11 +55,11 @@ A rotina de petshops e clínicas veterinárias envolve o gerenciamento de client
 
 Quando essas informações são controladas de forma fragmentada, surgem problemas como:
 
-- dificuldade para localizar o histórico de clientes e pets;
-- perda de informações sobre atendimentos;
-- falta de padronização nos status da agenda;
-- baixa visibilidade sobre serviços realizados e faturamento;
-- excesso de etapas durante o atendimento na recepção.
+- Dificuldade para localizar o histórico de clientes e pets;
+- Perda de informações sobre atendimentos;
+- Falta de padronização nos status da agenda;
+- Baixa visibilidade sobre serviços realizados e faturamento;
+- Excesso de etapas durante o atendimento na recepção.
 
 O Pet Shop System V2 centraliza essas operações em um único sistema, com um fluxo direto:
 
@@ -82,7 +99,7 @@ Os atendimentos podem utilizar os seguintes status:
 
 ## Segurança Aplicada
 
-A V2 inclui medidas de segurança adequadas ao contexto de uma aplicação PHP tradicional:
+A V2 inclui medidas de segurança aplicadas ao contexto de uma aplicação PHP procedural:
 
 - armazenamento de senhas com `password_hash()`;
 - validação de senhas com `password_verify()`;
@@ -94,10 +111,9 @@ A V2 inclui medidas de segurança adequadas ao contexto de uma aplicação PHP t
 - cookies de sessão com `HttpOnly` e `SameSite=Lax`;
 - modo estrito de sessão;
 - bloqueio de páginas internas para usuários não autenticados;
-- desativação lógica de clientes, pets e serviços;
 - mensagens de erro de banco sem exposição direta de credenciais;
 - bloqueio de acesso web às pastas `config`, `scripts` e `sql` pelo `.htaccess`;
-- cabeçalhos HTTP básicos de proteção no Apache.
+- cabeçalhos HTTP básicos de proteção via Apache, quando o módulo de headers está habilitado.
 
 Em produção, o atributo `Secure` do cookie de sessão é ativado quando a aplicação é acessada por HTTPS.
 
@@ -175,7 +191,7 @@ Petshopsystemv2/
    http://localhost/Petshopsystemv2/
    ```
 
-### Configuração para deploy futuro
+### Configuração para ambiente de hospedagem
 
 A aplicação aceita as seguintes variáveis de ambiente:
 
@@ -190,7 +206,7 @@ DB_NAME=seu_banco
 
 O arquivo `.env.example` funciona como referência. A aplicação lê as variáveis disponibilizadas pelo ambiente do servidor PHP; ela não carrega automaticamente um arquivo `.env`.
 
-Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente nos arquivos de configuração durante o deploy e não versione as credenciais reais.
+Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente nos arquivos de configuração durante a publicação e não versione as credenciais reais.
 
 Antes de publicar:
 
@@ -261,7 +277,7 @@ O banco público inclui contas fictícias para avaliação local:
 | Administrador | `admin@petshop.com` | `admin123` |
 | Recepcionista | `recepcao@petshop.com` | `recepcao123` |
 
-> Essas credenciais são exclusivamente demonstrativas. Altere ou remova essas contas antes de disponibilizar a aplicação publicamente.
+> Essas credenciais são exclusivamente demonstrativas. Em um ambiente de produção real, altere ou remova essas contas antes de disponibilizar a aplicação.
 
 ## Testes
 
@@ -394,7 +410,7 @@ O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP p
 - padronização de banco e aplicação em UTF-8/`utf8mb4`;
 - separação entre código da aplicação e ferramentas de desenvolvimento;
 - criação de testes funcionais para os fluxos críticos;
-- sanitização de dados antes da publicação pública;
+- sanitização de dados antes da publicação;
 - configuração da aplicação para ambientes diferentes por variáveis de ambiente.
 
 A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
@@ -404,11 +420,17 @@ A evolução da V1 para a V2 teve como foco estabilidade, segurança, organizaç
 **Natan Da Luz**
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
-
 - LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
-
 - Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
 Projeto desenvolvido com base em uma operação real de petshop.
 
 A versão pública utiliza exclusivamente dados demonstrativos fictícios, preservando a segurança e a privacidade dos dados originais.
+
+## Links
+
+- Demonstração Online: [petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)
+
+- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
+
+- Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)

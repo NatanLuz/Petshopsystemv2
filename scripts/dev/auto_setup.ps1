@@ -1,15 +1,4 @@
-<#
-auto_setup.ps1
 
-Automatiza: copia da pasta do projeto para htdocs (se necessario) e importa o arquivo SQL
-Uso (PowerShell):
-  - Abra o PowerShell como Administrador
-  - Executar:
-      powershell -ExecutionPolicy Bypass -File ".\scripts\dev\auto_setup.ps1"
-
-Parametros opcionais (editar no topo do arquivo ou passar via -SourcePath):
-  -SourcePath, -TargetRoot, -DbName, -MysqlExe, -MysqlUser, -MysqlPass
-#>
 
 param(
     [string]$SourcePath = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

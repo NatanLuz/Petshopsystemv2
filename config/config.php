@@ -5,19 +5,9 @@ date_default_timezone_set('America/Sao_Paulo');
 // Nome do sistema
 define('SYSTEM_NAME', 'Pet Shop System');
 
-define('APP_ENV', getenv('APP_ENV') ?: 'development');
+define('APP_ENV', getenv('APP_ENV') ?: 'production');
 
-$baseUrl = getenv('BASE_URL');
-if (!$baseUrl) {
-    $isHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
-    $scheme = $isHttps ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-    $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/');
-    $basePath = str_replace('\\', '/', dirname(dirname($scriptName)));
-    $basePath = $basePath === '/' || $basePath === '.' ? '' : $basePath;
-    $baseUrl = $scheme . '://' . $host . $basePath . '/';
-}
-
+$baseUrl = getenv('BASE_URL') ?: 'https://petsystem.rf.gd/';
 define('BASE_URL', rtrim($baseUrl, '/') . '/');
 
 // Diretorios
