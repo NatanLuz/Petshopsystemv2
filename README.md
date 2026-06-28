@@ -1,6 +1,6 @@
-# Pet Shop System V2
+# Pet-Shop System (V2)
 
-Sistema web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
+Sistema Web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
 
 ![Status](https://img.shields.io/badge/Status-Completo-success)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)
@@ -78,7 +78,7 @@ O Pet Shop System V2 centraliza essas operações em um único sistema, com um f
 | Filtros | Pesquisa por texto, espécie, categoria, data e status |
 | Ferramentas de desenvolvimento | Scripts auxiliares para instalação, conexão e testes funcionais |
 
-Os atendimentos podem utilizar os seguintes status:
+Os atendimentos podem utilizar/conter os seguintes status:
 
 - Agendado;
 - Em Atendimento;
@@ -297,7 +297,7 @@ Caso o PHP não esteja disponível no `PATH`, utilize:
 
 ### Teste funcional automatizado
 
-O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
+O projeto inclui um script no PowerShell que utiliza um banco isolado para validar:
 
 - login como administrador;
 - login como recepcionista;
