@@ -420,7 +420,9 @@ A evolução da V1 para a V2 teve como foco estabilidade, segurança, organizaç
 **Natan Da Luz**
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
+   
 - LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
+
 - Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
 Projeto desenvolvido com base em uma operação real de petshop.
