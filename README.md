@@ -415,7 +415,7 @@ O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP p
 
 A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
 
-## Autor
+## Autor / Contato
 
 **Natan Da Luz**
 
