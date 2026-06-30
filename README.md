@@ -1,6 +1,6 @@
 # Pet-Shop System (V2)
 
-Sistema Web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
+Sistema Web de gestão operacional, para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
 
 ![Status](https://img.shields.io/badge/Status-Completo-success)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)
