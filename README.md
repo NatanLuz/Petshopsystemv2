@@ -1,6 +1,6 @@
-# Pet-Shop System (V2)
+# Pet Shop System V2
 
-Sistema Web de gestão operacional, para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
+Sistema web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
 
 ![Status](https://img.shields.io/badge/Status-Completo-success)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)
@@ -78,7 +78,7 @@ O Pet Shop System V2 centraliza essas operações em um único sistema, com um f
 | Filtros | Pesquisa por texto, espécie, categoria, data e status |
 | Ferramentas de desenvolvimento | Scripts auxiliares para instalação, conexão e testes funcionais |
 
-Os atendimentos podem utilizar/conter os seguintes status:
+Os atendimentos podem utilizar os seguintes status:
 
 - Agendado;
 - Em Atendimento;
@@ -130,6 +130,7 @@ Petshopsystemv2/
 │       └── main.js
 ├── config/
 │   ├── config.php
+│   ├── database.example.php
 │   └── database.php
 ├── includes/
 │   ├── footer.php
@@ -168,13 +169,9 @@ Petshopsystemv2/
 ### Requisitos
 
 - PHP 7.4 ou superior(recomendado PHP superior para melhor execução);
-  
 - MySQL 5.7+, MariaDB ou versão compatível;
-
 - Apache;
-  
 - extensão MySQLi habilitada;
-  
 - XAMPP recomendado para execução local no Windows.
 
 ### Instalação local com XAMPP
@@ -195,6 +192,26 @@ Petshopsystemv2/
    http://localhost/Petshopsystemv2/
    ```
 
+### Configuração do arquivo de banco
+
+O arquivo `config/database.php` contém os dados reais de conexão com o banco e não deve ser versionado.
+
+O repositório público mantém apenas o modelo seguro:
+
+```text
+config/database.example.php
+```
+
+Para configurar o projeto, copie o modelo:
+
+```powershell
+Copy-Item ".\config\database.example.php" ".\config\database.php"
+```
+
+Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor.
+
+No servidor InfinityFree, envie o `config/database.php` real pelo FileZilla junto com os arquivos da aplicação. Nunca envie credenciais reais para o GitHub.
+
 ### Configuração para ambiente de hospedagem
 
 A aplicação aceita as seguintes variáveis de ambiente:
@@ -210,7 +227,7 @@ DB_NAME=seu_banco
 
 O arquivo `.env.example` funciona como referência. A aplicação lê as variáveis disponibilizadas pelo ambiente do servidor PHP; ela não carrega automaticamente um arquivo `.env`.
 
-Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente nos arquivos de configuração durante a publicação e não versione as credenciais reais.
+Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente em `config/database.php` durante a publicação e mantenha esse arquivo fora do Git. O arquivo público para referência é `config/database.example.php`.
 
 Antes de publicar:
 
@@ -218,6 +235,7 @@ Antes de publicar:
 - use um usuário de banco dedicado, sem privilégios de administrador;
 - configure corretamente a `BASE_URL`;
 - não publique credenciais reais;
+- não versione `config/database.php`;
 - altere as senhas dos usuários demonstrativos;
 - mantenha `config/`, `scripts/` e `sql/` fora do acesso público;
 - confirme que as regras do `.htaccess` são respeitadas pelo servidor;
@@ -301,7 +319,7 @@ Caso o PHP não esteja disponível no `PATH`, utilize:
 
 ### Teste funcional automatizado
 
-O projeto inclui um script no PowerShell que utiliza um banco isolado para validar:
+O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
 
 - login como administrador;
 - login como recepcionista;
@@ -419,14 +437,13 @@ O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP p
 
 A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
 
-## Autor / Contato
+## Autor
 
 **Natan Da Luz**
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
-   
-- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
 
+- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
 - Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
 Projeto desenvolvido com base em uma operação real de petshop.

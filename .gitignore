@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+config/database.php
 *.log
 *.cache
 /logs/
