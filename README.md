@@ -168,9 +168,13 @@ Petshopsystemv2/
 ### Requisitos
 
 - PHP 7.4 ou superior(recomendado PHP superior para melhor execução);
+  
 - MySQL 5.7+, MariaDB ou versão compatível;
+
 - Apache;
+  
 - extensão MySQLi habilitada;
+  
 - XAMPP recomendado para execução local no Windows.
 
 ### Instalação local com XAMPP
