@@ -18,7 +18,7 @@
 
 <body>
     <div class="wrapper">
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h3><i class="fas fa-paw"></i> <?php echo SYSTEM_NAME; ?></h3>
                 <p>Gestao Completa</p>
@@ -74,11 +74,16 @@
             </ul>
         </aside>
 
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <main class="main-content">
 
             <nav class="topbar">
                 <div class="topbar-left">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Abrir menu"
+                        aria-controls="sidebar" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
                     <h4><?php echo isset($page_title) ? $page_title : 'Dashboard'; ?></h4>
                 </div>
 
