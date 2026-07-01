@@ -29,7 +29,7 @@ A aplicação encontra-se disponível publicamente para demonstração.
 **URL:**
 [https://petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)
 
-### Usuários de demonstração
+### Contas para acessar a demonstração
 
 **Administrador**
 
