@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $estados = ['', 'SP', 'RJ', 'MG', 'ES', 'PR', 'SC', 'RS', 'BA', 'PE', 'CE', 'RN', 'PB', 'AL', 'SE', 'PA', 'AM', 'RR', 'AP', 'TO', 'DF', 'AC', 'RO', 'MT', 'MS'];
 
         if (empty($nome) || empty($telefone)) {
-            $error = 'Nome e telefone sao obrigatorios.';
+            $error = 'Nome e telefone são obrigatórios.';
         } elseif ($email !== null && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error = 'Informe um email valido.';
+            $error = 'Informe um e-mail válido.';
         } elseif (!in_array($estado, $estados, true)) {
-            $error = 'Estado invalido.';
+            $error = 'Estado inválido.';
         } else {
             $conn = getConnection();
             
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $id);
         
         if ($stmt->execute()) {
-            $success = 'Cliente excluido com sucesso!';
+            $success = 'Cliente excluído com sucesso!';
         } else {
             $error = 'Erro ao excluir cliente.';
         }
@@ -125,7 +125,7 @@ include '../includes/header.php';
 <!-- Busca -->
 <div class="search-bar">
     <form method="GET" style="display: flex; gap: 1rem; flex: 1;">
-        <input type="text" name="search" placeholder="Buscar por nome, email, telefone ou CPF..."
+        <input type="text" name="search" placeholder="Buscar por nome, e-mail, telefone ou CPF..."
             value="<?php echo htmlspecialchars($search); ?>">
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-search"></i> Buscar
@@ -144,11 +144,11 @@ include '../includes/header.php';
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Email</th>
+                <th>E-mail</th>
                 <th>Telefone</th>
                 <th>Celular</th>
                 <th>Cidade</th>
-                <th>Acoes</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -216,7 +216,7 @@ include '../includes/header.php';
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">E-mail</label>
                         <input type="email" id="email" name="email">
                     </div>
 
@@ -238,7 +238,7 @@ include '../includes/header.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="endereco">Endereco</label>
+                        <label for="endereco">Endereço</label>
                         <input type="text" id="endereco" name="endereco">
                     </div>
                 </div>
@@ -287,7 +287,7 @@ include '../includes/header.php';
                 </div>
 
                 <div class=" form-group">
-                    <label for="observacoes">Observacoes</label>
+                    <label for="observacoes">Observações</label>
                     <textarea id="observacoes" name="observacoes"></textarea>
                 </div>
 

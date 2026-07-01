@@ -7,6 +7,26 @@ $page_title = 'Gerenciar Atendimentos';
 $success = '';
 $error = '';
 
+function formatStatusAtendimento($status) {
+    $labels = [
+        'Agendado' => 'Agendado',
+        'Em Atendimento' => 'Em Atendimento',
+        'Concluido' => 'Concluído',
+        'Cancelado' => 'Cancelado',
+    ];
+
+    return $labels[$status] ?? $status;
+}
+
+function formatAtendimentoLabel($value) {
+    $labels = [
+        'Passaro' => 'Pássaro',
+        'Veterinario' => 'Veterinário',
+    ];
+
+    return $labels[$value] ?? $value;
+}
+
 // Aqui é as ações do CRUD
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status_validos = ['Agendado', 'Em Atendimento', 'Concluido', 'Cancelado'];
 
         if (empty($pet_id) || empty($servico_id) || empty($data_atendimento) || empty($hora_atendimento)) {
-            $error = 'Pet, servico, data e hora sao obrigatorios.';
+            $error = 'Pet, serviço, data e hora são obrigatórios.';
         } elseif (!isValidDate($data_atendimento) || !isValidDate($hora_atendimento, 'H:i')) {
-            $error = 'Data ou hora invalida.';
+            $error = 'Data ou hora inválida.';
         } elseif (!in_array($status, $status_validos, true) || $valor < 0) {
-            $error = 'Status ou valor invalido.';
+            $error = 'Status ou valor inválido.';
         } else {
             $conn = getConnection();
             $activeClause = $action === 'create' ? ' AND ativo = 1' : '';
@@ -42,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $referenceStmt->close();
 
             if (!$references['pet_ok'] || !$references['servico_ok']) {
-                $error = 'Pet ou servico selecionado nao esta disponivel.';
+                $error = 'Pet ou serviço selecionado não está disponível.';
                 $conn->close();
             } elseif ($action === 'create') {
                 $stmt = $conn->prepare("INSERT INTO atendimentos (pet_id, servico_id, usuario_id, data_atendimento, hora_atendimento, status, valor, observacoes)
@@ -79,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $id);
 
         if ($stmt->execute()) {
-            $success = 'Atendimento excluido com sucesso!';
+            $success = 'Atendimento excluído com sucesso!';
         } else {
             $error = 'Erro ao excluir atendimento.';
         }
@@ -185,7 +205,7 @@ include '../includes/header.php';
             <option value="Agendado" <?php echo $status_filter === 'Agendado' ? 'selected' : ''; ?>>Agendado</option>
             <option value="Em Atendimento" <?php echo $status_filter === 'Em Atendimento' ? 'selected' : ''; ?>>Em
                 Atendimento</option>
-            <option value="Concluido" <?php echo $status_filter === 'Concluido' ? 'selected' : ''; ?>>Concluido</option>
+            <option value="Concluido" <?php echo $status_filter === 'Concluido' ? 'selected' : ''; ?>>Concluído</option>
             <option value="Cancelado" <?php echo $status_filter === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
         </select>
 
@@ -209,10 +229,10 @@ include '../includes/header.php';
                 <th>Data/Hora</th>
                 <th>Cliente</th>
                 <th>Pet</th>
-                <th>Servico</th>
+                <th>Serviço</th>
                 <th>Valor</th>
                 <th>Status</th>
-                <th>Acoes</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -228,11 +248,11 @@ include '../includes/header.php';
                 </td>
                 <td>
                     <strong><?php echo htmlspecialchars($atendimento['pet_nome']); ?></strong><br>
-                    <small style="color: #858796;"><?php echo e($atendimento['especie']); ?></small>
+                    <small style="color: #858796;"><?php echo e(formatAtendimentoLabel($atendimento['especie'])); ?></small>
                 </td>
                 <td>
                     <?php echo htmlspecialchars($atendimento['servico_nome']); ?><br>
-                    <small style="color: #858796;"><?php echo e($atendimento['categoria']); ?></small>
+                    <small style="color: #858796;"><?php echo e(formatAtendimentoLabel($atendimento['categoria'])); ?></small>
                 </td>
                 <td><strong><?php echo formatMoney($atendimento['valor']); ?></strong></td>
                 <td>
@@ -245,7 +265,7 @@ include '../includes/header.php';
                         case 'Cancelado': $badge_class = 'badge-danger'; break;
                     }
                     ?>
-                    <span class="badge <?php echo $badge_class; ?>"><?php echo e($atendimento['status']); ?></span>
+                    <span class="badge <?php echo $badge_class; ?>"><?php echo e(formatStatusAtendimento($atendimento['status'])); ?></span>
                 </td>
                 <td>
                     <div class="btn-group">
@@ -306,9 +326,9 @@ include '../includes/header.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="servico_id">Servico *</label>
+                        <label for="servico_id">Serviço *</label>
                         <select id="servico_id" name="servico_id" required onchange="updateValor()">
-                            <option value="">Selecione o servico</option>
+                            <option value="">Selecione o serviço</option>
                             <?php foreach ($servicos as $servico): ?>
                             <option value="<?php echo $servico['id']; ?>" data-preco="<?php echo $servico['preco']; ?>">
                                 <?php echo htmlspecialchars($servico['nome']) . ' - ' . formatMoney($servico['preco']); ?>
@@ -334,7 +354,7 @@ include '../includes/header.php';
                         <select id="status" name="status" required>
                             <option value="Agendado">Agendado</option>
                             <option value="Em Atendimento">Em Atendimento</option>
-                            <option value="Concluido">Concluido</option>
+                            <option value="Concluido">Concluído</option>
                             <option value="Cancelado">Cancelado</option>
                         </select>
                     </div>
@@ -346,7 +366,7 @@ include '../includes/header.php';
                 </div>
 
                 <div class="form-group">
-                    <label for="observacoes">Observacoes</label>
+                    <label for="observacoes">Observações</label>
                     <textarea id="observacoes" name="observacoes" rows="3"></textarea>
                 </div>
 

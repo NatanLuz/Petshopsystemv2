@@ -410,12 +410,19 @@ Crie esse banco e importe `sql/database.sql` antes da execução.
 A V2 está finalizada. Os itens abaixo representam possibilidades para versões futuras e não fazem parte da implementação atual:
 
 - controle mais granular de permissões;
+
 - logs estruturados para auditoria;
+
 - rotina automatizada de backup;
+
 - versionamento de preços e serviços;
+
 - API REST para integrações externas;
+
 - notificações de agendamento;
+
 - containerização opcional do ambiente;
+
 - estudos de recursos de análise e previsão operacional.
 
 ## Aprendizados Técnicos
@@ -453,7 +460,3 @@ A versão pública utiliza exclusivamente dados demonstrativos fictícios, prese
 ## Links
 
 - Demonstração Online: [petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)
-
-- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
-
-- Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)

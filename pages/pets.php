@@ -7,6 +7,22 @@ $page_title = 'Gerenciar Pets';
 $success = '';
 $error = '';
 
+function formatEspeciePet($especie) {
+    $labels = [
+        'Passaro' => 'Pássaro',
+    ];
+
+    return $labels[$especie] ?? $especie;
+}
+
+function formatSexoPet($sexo) {
+    $labels = [
+        'Femea' => 'Fêmea',
+    ];
+
+    return $labels[$sexo] ?? $sexo;
+}
+
 // Acoes do CRUD feito
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifyCsrf();
@@ -27,13 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sexos = ['Macho', 'Femea'];
         
         if (empty($nome) || empty($cliente_id) || empty($especie) || empty($sexo)) {
-            $error = 'Nome, cliente, especie e sexo sao obrigatorios.';
+            $error = 'Nome, cliente, espécie e sexo são obrigatórios.';
         } elseif (!in_array($especie, $especies, true) || !in_array($sexo, $sexos, true)) {
-            $error = 'Especie ou sexo invalido.';
+            $error = 'Espécie ou sexo inválido.';
         } elseif ($data_nascimento !== null && (!isValidDate($data_nascimento) || $data_nascimento > date('Y-m-d'))) {
-            $error = 'Data de nascimento invalida.';
+            $error = 'Data de nascimento inválida.';
         } elseif ($peso === false || ($peso !== null && $peso < 0)) {
-            $error = 'Peso invalido.';
+            $error = 'Peso inválido.';
         } else {
             $conn = getConnection();
             $ownerStmt = $conn->prepare("SELECT id FROM clientes WHERE id = ? AND ativo = 1");
@@ -43,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ownerStmt->close();
 
             if (!$ownerExists) {
-                $error = 'Cliente selecionado nao esta disponivel.';
+                $error = 'Cliente selecionado não está disponível.';
                 $conn->close();
             } else {
             
@@ -81,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $id);
         
         if ($stmt->execute()) {
-            $success = 'Pet excluido com sucesso!';
+            $success = 'Pet excluído com sucesso!';
         } else {
             $error = 'Erro ao excluir pet.';
         }
@@ -169,10 +185,10 @@ include '../includes/header.php';
             value="<?php echo htmlspecialchars($search); ?>">
 
         <select name="especie" style="padding: 0.75rem; border: 1px solid #d1d3e2; border-radius: 4px;">
-            <option value="">Todas as Especies</option>
+            <option value="">Todas as Espécies</option>
             <option value="Cachorro" <?php echo $especie_filter === 'Cachorro' ? 'selected' : ''; ?>>Cachorro</option>
             <option value="Gato" <?php echo $especie_filter === 'Gato' ? 'selected' : ''; ?>>Gato</option>
-            <option value="Passaro" <?php echo $especie_filter === 'Passaro' ? 'selected' : ''; ?>>Passaro</option>
+            <option value="Passaro" <?php echo $especie_filter === 'Passaro' ? 'selected' : ''; ?>>Pássaro</option>
             <option value="Roedor" <?php echo $especie_filter === 'Roedor' ? 'selected' : ''; ?>>Roedor</option>
             <option value="Reptil" <?php echo $especie_filter === 'Reptil' ? 'selected' : ''; ?>>Reptil</option>
             <option value="Outro" <?php echo $especie_filter === 'Outro' ? 'selected' : ''; ?>>Outro</option>
@@ -197,11 +213,11 @@ include '../includes/header.php';
             <tr>
                 <th>Pet</th>
                 <th>Dono</th>
-                <th>Especie</th>
-                <th>Raca</th>
+                <th>Espécie</th>
+                <th>Raça</th>
                 <th>Sexo</th>
                 <th>Idade</th>
-                <th>Acoes</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -209,9 +225,9 @@ include '../includes/header.php';
             <tr>
                 <td><strong><?php echo htmlspecialchars($pet['nome']); ?></strong></td>
                 <td><?php echo htmlspecialchars($pet['cliente_nome']); ?></td>
-                <td><span class="badge badge-info"><?php echo e($pet['especie']); ?></span></td>
+                <td><span class="badge badge-info"><?php echo e(formatEspeciePet($pet['especie'])); ?></span></td>
                 <td><?php echo htmlspecialchars($pet['raca']); ?></td>
-                <td><?php echo e($pet['sexo']); ?></td>
+                <td><?php echo e(formatSexoPet($pet['sexo'])); ?></td>
                 <td>
                     <?php 
                     if (!empty($pet['data_nascimento'])) {
@@ -287,12 +303,12 @@ include '../includes/header.php';
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="especie">Especie *</label>
+                        <label for="especie">Espécie *</label>
                         <select id="especie" name="especie" required>
                             <option value="">Selecione</option>
                             <option value="Cachorro">Cachorro</option>
                             <option value="Gato">Gato</option>
-                            <option value="Passaro">Passaro</option>
+                            <option value="Passaro">Pássaro</option>
                             <option value="Roedor">Roedor</option>
                             <option value="Reptil">Reptil</option>
                             <option value="Outro">Outro</option>
@@ -300,7 +316,7 @@ include '../includes/header.php';
                     </div>
 
                     <div class="form-group">
-                        <label for="raca">Raca</label>
+                        <label for="raca">Raça</label>
                         <input type="text" id="raca" name="raca">
                     </div>
 
@@ -309,7 +325,7 @@ include '../includes/header.php';
                         <select id="sexo" name="sexo" required>
                             <option value="">Selecione</option>
                             <option value="Macho">Macho</option>
-                            <option value="Femea">Femea</option>
+                            <option value="Femea">Fêmea</option>
                         </select>
                     </div>
                 </div>
@@ -332,7 +348,7 @@ include '../includes/header.php';
                 </div>
 
                 <div class="form-group">
-                    <label for="observacoes">Observacoes</label>
+                    <label for="observacoes">Observações</label>
                     <textarea id="observacoes" name="observacoes"></textarea>
                 </div>
 

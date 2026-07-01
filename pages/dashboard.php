@@ -5,6 +5,15 @@ checkLogin();
 
 $page_title = 'Dashboard';
 
+function formatDashboardLabel($value) {
+    $labels = [
+        'Passaro' => 'Pássaro',
+        'Veterinario' => 'Veterinário',
+    ];
+
+    return $labels[$value] ?? $value;
+}
+
 // Buscar estatisticas
 $conn = getConnection();
 
@@ -119,7 +128,7 @@ include '../includes/header.php';
     <div class="card stat-card card-info">
         <div class="stat-info">
             <h3><?php echo formatMoney($faturamento_mes); ?></h3>
-            <p>Faturamento do Mes</p>
+            <p>Faturamento do Mês</p>
         </div>
         <div class="stat-icon icon-info">
             <i class="fas fa-dollar-sign"></i>
@@ -131,7 +140,7 @@ include '../includes/header.php';
 <div class="dashboard-grid dashboard-charts">
     <!-- Grafico de Atendimentos por Especie -->
     <div class="chart-card">
-    <h2><i class="fas fa-chart-pie"></i> Atendimentos por Especie (30 dias)</h2>
+    <h2><i class="fas fa-chart-pie"></i> Atendimentos por Espécie (30 dias)</h2>
         <canvas id="especieChart"></canvas>
     </div>
 
@@ -146,11 +155,11 @@ include '../includes/header.php';
 <div class="dashboard-grid">
     <!-- Servicos Mais Realizados -->
     <div class="table-card">
-    <h2><i class="fas fa-star"></i> Servicos Mais Realizados</h2>
+    <h2><i class="fas fa-star"></i> Serviços Mais Realizados</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Servico</th>
+                    <th>Serviço</th>
                     <th>Quantidade</th>
                 </tr>
             </thead>
@@ -163,7 +172,7 @@ include '../includes/header.php';
                 <?php endforeach; ?>
                     <?php if (empty($servicos_populares)): ?>
                 <tr>
-                    <td colspan="2" class="text-center">Nenhum servico realizado nos ultimos 30 dias</td>
+                    <td colspan="2" class="text-center">Nenhum serviço realizado nos últimos 30 dias</td>
                 </tr>
                 <?php endif; ?>
             </tbody>
@@ -172,7 +181,7 @@ include '../includes/header.php';
 
     <!-- Proximos Atendimentos -->
     <div class="table-card">
-    <h2><i class="fas fa-clock"></i> Proximos Atendimentos</h2>
+    <h2><i class="fas fa-clock"></i> Próximos Atendimentos</h2>
         <table>
             <thead>
                 <tr>
@@ -188,7 +197,7 @@ include '../includes/header.php';
                     </td>
                     <td><?php echo htmlspecialchars($atendimento['cliente_nome']); ?></td>
                     <td><?php echo htmlspecialchars($atendimento['pet_nome']); ?>
-                        (<?php echo e($atendimento['especie']); ?>)</td>
+                        (<?php echo e(formatDashboardLabel($atendimento['especie'])); ?>)</td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if (empty($proximos_atendimentos)): ?>
@@ -207,7 +216,7 @@ const especieCtx = document.getElementById('especieChart').getContext('2d');
 const especieChart = new Chart(especieCtx, {
     type: 'doughnut',
     data: {
-        labels: <?php echo json_encode(array_column($atendimentos_especie, 'especie')); ?>,
+        labels: <?php echo json_encode(array_map('formatDashboardLabel', array_column($atendimentos_especie, 'especie'))); ?>,
         datasets: [{
             data: <?php echo json_encode(array_column($atendimentos_especie, 'total')); ?>,
             backgroundColor: [

@@ -21,7 +21,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h3><i class="fas fa-paw"></i> <?php echo SYSTEM_NAME; ?></h3>
-                <p>Gestao Completa</p>
+                <p>Gestão Completa</p>
             </div>
 
             <ul class="sidebar-menu">
@@ -53,7 +53,7 @@
                     <a href="<?php echo BASE_URL; ?>pages/servicos.php"
                         class="<?php echo (basename($_SERVER['PHP_SELF']) == 'servicos.php') ? 'active' : ''; ?>">
                         <i class="fas fa-briefcase"></i>
-                        <span>Servicos</span>
+                        <span>Serviços</span>
                     </a>
                 </li>
 

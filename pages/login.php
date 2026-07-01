@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: dashboard.php');
                 exit();
             } else {
-                $error = 'Email ou senha invalidos.';
+                $error = 'E-mail ou senha inválidos.';
             }
         } else {
-            $error = 'Email ou senha invalidos.';
+            $error = 'E-mail ou senha inválidos.';
         }
         
         $stmt->close();
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="login-card">
             <div class="login-header">
                 <h1><i class="fas fa-paw"></i> <?php echo SYSTEM_NAME; ?></h1>
-                <p>Faca login para continuar</p>
+                <p>Faça login para continuar</p>
             </div>
 
             <?php if (!empty($error)): ?>
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php echo csrfField(); ?>
                 <div class="form-group">
                     <label for="email">
-                        <i class="fas fa-envelope"></i> Email
+                        <i class="fas fa-envelope"></i> E-mail
                     </label>
                     <input type="email" id="email" name="email" required autofocus>
                 </div>
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6;">
                 <p style="text-align: center; color: #858796; font-size: 0.85rem; margin-bottom: 0.5rem;">
-                    <strong>Usuarios de teste:</strong>
+                    <strong>Usuários de teste:</strong>
                 </p>
                 <p style="text-align: center; color: #858796; font-size: 0.8rem; margin: 0.25rem 0;">
                     Admin: <strong>admin@petshop.com</strong> / Senha: <strong>admin123</strong>

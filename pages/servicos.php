@@ -3,9 +3,17 @@ require_once '../config/config.php';
 startSecureSession();
 checkLogin();
 
-$page_title = 'Gerenciar Servicos';
+$page_title = 'Gerenciar Serviços';
 $success = '';
 $error = '';
+
+function formatCategoriaServico($categoria) {
+    $labels = [
+        'Veterinario' => 'Veterinário',
+    ];
+
+    return $labels[$categoria] ?? $categoria;
+}
 
 // Acoes de CRUD
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $categorias = ['Banho e Tosa', 'Veterinario', 'Vacina', 'Consulta', 'Cirurgia', 'Hospedagem', 'Outro'];
 
         if (empty($nome) || $preco <= 0) {
-            $error = 'Nome e preco sao obrigatorios.';
+            $error = 'Nome e preço são obrigatórios.';
         } elseif ($duracao_minutos <= 0) {
-            $error = 'A duracao deve ser maior que zero.';
+            $error = 'A duração deve ser maior que zero.';
         } elseif (!in_array($categoria, $categorias, true)) {
-            $error = 'Categoria invalida.';
+            $error = 'Categoria inválida.';
         } else {
             $conn = getConnection();
             
@@ -36,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param("ssdis", $nome, $descricao, $preco, $duracao_minutos, $categoria);
                 
                 if ($stmt->execute()) {
-                    $success = 'Servico cadastrado com sucesso!';
+                    $success = 'Serviço cadastrado com sucesso!';
                 } else {
-                    $error = 'Erro ao cadastrar servico.';
+                    $error = 'Erro ao cadastrar serviço.';
                 }
             } else { // update
                 $id = intval($_POST['id']);
@@ -47,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param("ssdisi", $nome, $descricao, $preco, $duracao_minutos, $categoria, $id);
                 
                 if ($stmt->execute()) {
-                    $success = 'Servico atualizado com sucesso!';
+                    $success = 'Serviço atualizado com sucesso!';
                 } else {
-                    $error = 'Erro ao atualizar servico.';
+                    $error = 'Erro ao atualizar serviço.';
                 }
             }
             
@@ -63,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $id);
         
         if ($stmt->execute()) {
-            $success = 'Servico excluido com sucesso!';
+            $success = 'Serviço excluído com sucesso!';
         } else {
-            $error = 'Erro ao excluir servico.';
+            $error = 'Erro ao excluir serviço.';
         }
         
         $stmt->close();
@@ -129,21 +137,21 @@ include '../includes/header.php';
 <?php endif; ?>
 
 <div class="d-flex justify-between align-center mb-3">
-    <h1 class="page-title"><i class="fas fa-briefcase"></i> Servicos</h1>
+    <h1 class="page-title"><i class="fas fa-briefcase"></i> Serviços</h1>
     <button class="btn btn-primary" onclick="openModal()">
-        <i class="fas fa-plus"></i> Novo Servico
+        <i class="fas fa-plus"></i> Novo Serviço
     </button>
 </div>
 
 <!-- Busca e Filtros -->
 <div class="search-bar">
     <form method="GET" style="display: flex; gap: 1rem; flex: 1; flex-wrap: wrap;">
-    <input type="text" name="search" placeholder="Buscar por nome ou descricao..." value="<?php echo htmlspecialchars($search); ?>">
+    <input type="text" name="search" placeholder="Buscar por nome ou descrição..." value="<?php echo htmlspecialchars($search); ?>">
         
         <select name="categoria" style="padding: 0.75rem; border: 1px solid #d1d3e2; border-radius: 4px;">
             <option value="">Todas as Categorias</option>
             <option value="Banho e Tosa" <?php echo $categoria_filter === 'Banho e Tosa' ? 'selected' : ''; ?>>Banho e Tosa</option>
-            <option value="Veterinario" <?php echo $categoria_filter === 'Veterinario' ? 'selected' : ''; ?>>Veterinario</option>
+            <option value="Veterinario" <?php echo $categoria_filter === 'Veterinario' ? 'selected' : ''; ?>>Veterinário</option>
             <option value="Vacina" <?php echo $categoria_filter === 'Vacina' ? 'selected' : ''; ?>>Vacina</option>
             <option value="Consulta" <?php echo $categoria_filter === 'Consulta' ? 'selected' : ''; ?>>Consulta</option>
             <option value="Cirurgia" <?php echo $categoria_filter === 'Cirurgia' ? 'selected' : ''; ?>>Cirurgia</option>
@@ -168,11 +176,11 @@ include '../includes/header.php';
     <table>
         <thead>
             <tr>
-                <th>Servico</th>
+                <th>Serviço</th>
                 <th>Categoria</th>
-                <th>Duracao</th>
-                <th>Preco</th>
-                <th>Acoes</th>
+                <th>Duração</th>
+                <th>Preço</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -184,7 +192,7 @@ include '../includes/header.php';
                         <br><small style="color: #858796;"><?php echo htmlspecialchars($servico['descricao']); ?></small>
                     <?php endif; ?>
                 </td>
-                <td><span class="badge badge-info"><?php echo e($servico['categoria']); ?></span></td>
+                <td><span class="badge badge-info"><?php echo e(formatCategoriaServico($servico['categoria'])); ?></span></td>
                 <td><?php echo $servico['duracao_minutos']; ?> min</td>
                 <td><strong><?php echo formatMoney($servico['preco']); ?></strong></td>
                 <td>
@@ -192,7 +200,7 @@ include '../includes/header.php';
                         <button class="btn btn-sm btn-info" onclick='editServico(<?php echo json_encode($servico, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)'>
                             <i class="fas fa-edit"></i>
                         </button>
-                        <form method="POST" style="display: inline;" onsubmit="return confirmDelete('Tem certeza que deseja excluir este servico?')">
+                        <form method="POST" style="display: inline;" onsubmit="return confirmDelete('Tem certeza que deseja excluir este serviço?')">
                             <?php echo csrfField(); ?>
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $servico['id']; ?>">
@@ -206,7 +214,7 @@ include '../includes/header.php';
             <?php endforeach; ?>
             <?php if (empty($servicos)): ?>
             <tr>
-                <td colspan="5" class="text-center">Nenhum servico encontrado</td>
+                <td colspan="5" class="text-center">Nenhum serviço encontrado</td>
             </tr>
             <?php endif; ?>
         </tbody>
@@ -218,7 +226,7 @@ include '../includes/header.php';
     <div style="max-width: 700px; margin: 2rem auto; padding: 2rem;">
         <div class="form-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <h2 id="modalTitle">Novo Servico</h2>
+                <h2 id="modalTitle">Novo Serviço</h2>
                 <button onclick="closeModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
             </div>
             
@@ -228,12 +236,12 @@ include '../includes/header.php';
                 <input type="hidden" name="id" id="servicoId">
                 
                 <div class="form-group">
-                    <label for="nome">Nome do Servico *</label>
+                    <label for="nome">Nome do Serviço *</label>
                     <input type="text" id="nome" name="nome" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="descricao">Descricao</label>
+                    <label for="descricao">Descrição</label>
                     <textarea id="descricao" name="descricao" rows="3"></textarea>
                 </div>
                 
@@ -243,7 +251,7 @@ include '../includes/header.php';
                         <select id="categoria" name="categoria" required>
                             <option value="">Selecione</option>
                             <option value="Banho e Tosa">Banho e Tosa</option>
-                            <option value="Veterinario">Veterinario</option>
+                            <option value="Veterinario">Veterinário</option>
                             <option value="Vacina">Vacina</option>
                             <option value="Consulta">Consulta</option>
                             <option value="Cirurgia">Cirurgia</option>
@@ -253,12 +261,12 @@ include '../includes/header.php';
                     </div>
                     
                     <div class="form-group">
-                        <label for="preco">Preco (R$) *</label>
+                        <label for="preco">Preço (R$) *</label>
                         <input type="number" id="preco" name="preco" step="0.01" min="0" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="duracao_minutos">Duracao (min)</label>
+                        <label for="duracao_minutos">Duração (min)</label>
                         <input type="number" id="duracao_minutos" name="duracao_minutos" min="0" value="30">
                     </div>
                 </div>
@@ -279,7 +287,7 @@ include '../includes/header.php';
 <script>
 function openModal() {
     document.getElementById('servicoModal').style.display = 'block';
-    document.getElementById('modalTitle').textContent = 'Novo Servico';
+    document.getElementById('modalTitle').textContent = 'Novo Serviço';
     document.getElementById('formAction').value = 'create';
     document.getElementById('servicoForm').reset();
 }
@@ -290,7 +298,7 @@ function closeModal() {
 
 function editServico(servico) {
     document.getElementById('servicoModal').style.display = 'block';
-    document.getElementById('modalTitle').textContent = 'Editar Servico';
+    document.getElementById('modalTitle').textContent = 'Editar Serviço';
     document.getElementById('formAction').value = 'update';
     document.getElementById('servicoId').value = servico.id;
     document.getElementById('nome').value = servico.nome;
