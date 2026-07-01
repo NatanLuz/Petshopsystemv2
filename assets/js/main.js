@@ -95,6 +95,10 @@ function toggleSidebar() {
   const sidebar = document.querySelector(".sidebar");
   const overlay = document.querySelector(".sidebar-overlay");
   const toggle = document.getElementById("mobileMenuToggle");
+  if (!sidebar) {
+    return;
+  }
+
   const isOpen = sidebar.classList.toggle("active");
 
   if (overlay) {
@@ -105,6 +109,8 @@ function toggleSidebar() {
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     toggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
   }
+
+  document.body.classList.toggle("sidebar-open", isOpen);
 }
 
 function closeSidebar() {
@@ -124,6 +130,8 @@ function closeSidebar() {
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Abrir menu");
   }
+
+  document.body.classList.remove("sidebar-open");
 }
 
 document.addEventListener("DOMContentLoaded", function () {

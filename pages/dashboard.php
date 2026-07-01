@@ -128,8 +128,7 @@ include '../includes/header.php';
 </div>
 
 <!-- Graficos -->
-<div
-    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+<div class="dashboard-grid dashboard-charts">
     <!-- Grafico de Atendimentos por Especie -->
     <div class="chart-card">
     <h2><i class="fas fa-chart-pie"></i> Atendimentos por Especie (30 dias)</h2>
@@ -144,7 +143,7 @@ include '../includes/header.php';
 </div>
 
 <!-- Tabelas -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
+<div class="dashboard-grid">
     <!-- Servicos Mais Realizados -->
     <div class="table-card">
     <h2><i class="fas fa-star"></i> Servicos Mais Realizados</h2>

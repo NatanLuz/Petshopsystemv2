@@ -7,7 +7,7 @@
     <title><?php echo isset($page_title) ? $page_title . ' - ' : ''; ?><?php echo SYSTEM_NAME; ?></title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css?v=mobile-fix-2">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
