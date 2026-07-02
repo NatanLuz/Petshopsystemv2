@@ -49,7 +49,7 @@ A aplicação encontra-se disponível publicamente para demonstração.
 
 > Todas as informações exibidas na demonstração são fictícias.
 
-## O Problema Resolvido :
+## O Problema Solucionado :
 
 A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
 
