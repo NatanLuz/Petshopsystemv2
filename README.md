@@ -13,7 +13,7 @@ A **V2 está estável e finalizada**.
 
 ## Objetivo do Projeto
 
-O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos fictícios e sanitizados para preservar a privacidade dos dados originais.
+O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
 
 O projeto está preparado para:
 
