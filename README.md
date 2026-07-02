@@ -334,7 +334,7 @@ O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
 - bloqueio de páginas privadas;
 - atributos do cookie de sessão.
 
-Execute:
+Execute e veja o projeto :
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\scripts\dev\functional_test.ps1"
@@ -430,16 +430,27 @@ A V2 está finalizada. Os itens abaixo representam possibilidades para versões 
 O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
 
 - organização modular sem substituição da arquitetura existente;
+
 - uso consistente de consultas preparadas;
+
 - proteção de formulários com tokens CSRF;
+
 - gerenciamento mais seguro de sessões;
+
 - escape de dados na saída HTML;
+
 - manutenção de relacionamentos entre clientes, pets e atendimentos;
+
 - uso de desativação lógica para preservar referências históricas;
+
 - padronização de banco e aplicação em UTF-8/`utf8mb4`;
+
 - separação entre código da aplicação e ferramentas de desenvolvimento;
+
 - criação de testes funcionais para os fluxos críticos;
+
 - sanitização de dados antes da publicação;
+
 - configuração da aplicação para ambientes diferentes por variáveis de ambiente.
 
 A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
