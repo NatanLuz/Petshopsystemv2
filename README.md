@@ -7,6 +7,9 @@ Sistema web de gestão operacional para petshops e clínicas veterinárias, dese
 ![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+
+## Demonstração online temporariamente indisponível.##
+
 ## Status do Projeto
 
 A **V2 está estável e finalizada**.
