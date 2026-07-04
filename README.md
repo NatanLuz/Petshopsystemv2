@@ -8,7 +8,7 @@ Sistema web de gestão operacional para petshops e clínicas veterinárias, dese
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 
-## Demonstração online temporariamente indisponível.##
+## Deploy em manutenção.
 
 ## Status do Projeto
 
