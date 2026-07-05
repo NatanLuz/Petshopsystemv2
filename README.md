@@ -29,7 +29,7 @@ O projeto está preparado para:
 
 ## Demonstração Online
 
-A aplicação encontra-se disponível publicamente para demonstração.
+Esta aplicação encontra-se disponível publicamente para demonstração.
 
 **URL:**
 [https://petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)
