@@ -10,7 +10,7 @@ Sistema web de gestão operacional para petshops e clínicas veterinárias, dese
 
 ## Deploy em manutenção.
 SEM PREVISÃO DE VOLTA
-
+(Em manutenção)
 
 ## Status do Projeto
 
