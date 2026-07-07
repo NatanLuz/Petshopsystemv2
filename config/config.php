@@ -7,7 +7,7 @@ define('SYSTEM_NAME', 'Pet Shop System');
 
 define('APP_ENV', getenv('APP_ENV') ?: 'production');
 
-$baseUrl = getenv('BASE_URL') ?: 'https://petsystem.rf.gd/';
+$baseUrl = getenv('BASE_URL') ?: 'http://localhost/Petshopsystemv2/';
 define('BASE_URL', rtrim($baseUrl, '/') . '/');
 
 // Diretorios

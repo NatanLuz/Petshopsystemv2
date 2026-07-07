@@ -16,6 +16,10 @@ SEM PREVISÃO DE VOLTA
 
 A **V2 está estável e finalizada**.
 
+Esta versão PHP procedural fica pública no GitHub como referência técnica estável. O projeto não possui demonstração online ativa nesta etapa.
+
+Uma nova versão em Laravel será desenvolvida separadamente, com arquitetura e estrutura modernizadas.
+
 ## Objetivo do Projeto
 
 O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
@@ -24,9 +28,9 @@ O projeto está preparado para:
 
 - apresentação em portfólio;
 - publicação no GitHub;
-- execução local com XAMPP;
-- execução em ambiente de hospedagem configurado.
+- execução local com XAMPP.
 
+<<<<<<< Updated upstream
 ## Demonstração Online
 
 Esta aplicação encontra-se disponível publicamente para demonstração.
@@ -55,6 +59,9 @@ Esta aplicação encontra-se disponível publicamente para demonstração.
 > Todas as informações exibidas na demonstração são fictícias.
 
 ## O Problema Solucionado :
+=======
+## Problema Solucionado
+>>>>>>> Stashed changes
 
 A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
 
@@ -213,9 +220,7 @@ Para configurar o projeto, copie o modelo:
 Copy-Item ".\config\database.example.php" ".\config\database.php"
 ```
 
-Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor.
-
-No servidor InfinityFree, envie o `config/database.php` real pelo FileZilla junto com os arquivos da aplicação. Nunca envie credenciais reais para o GitHub.
+Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor. Nunca envie credenciais reais para o GitHub.
 
 ### Configuração para ambiente de hospedagem
 
@@ -414,6 +419,8 @@ Crie esse banco e importe `sql/database.sql` antes da execução.
 
 A V2 está finalizada. Os itens abaixo representam possibilidades para versões futuras e não fazem parte da implementação atual:
 
+- nova versão em Laravel, desenvolvida em repositório/projeto separado;
+
 - controle mais granular de permissões;
 
 - logs estruturados para auditoria;
@@ -466,13 +473,8 @@ A evolução da V1 para a V2 teve como foco estabilidade, segurança, organizaç
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
 
-- LinkedIn: [linkedin.com/in/natandaluzdesenvolvedor](https://www.linkedin.com/in/natandaluzdesenvolvedor/)
+- LinkedIn: [linkedin.com/in/natandaluz](https://www.linkedin.com/in/natandaluz/)
+
 - Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
 Projeto desenvolvido com base em uma operação real de petshop.
-
-A versão pública utiliza exclusivamente dados demonstrativos fictícios, preservando a segurança e a privacidade dos dados originais.
-
-## Links
-
-- Demonstração Online: [petsystem.rf.gd/pages/login.php](https://petsystem.rf.gd/pages/login.php)

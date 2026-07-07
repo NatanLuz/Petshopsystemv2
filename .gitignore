@@ -24,3 +24,12 @@ Thumbs.db
 .idea/
 .vscode/
 *.bak
+mysqli_test.php
+teste.php
+database_test.php
+connection_test.php
+phpinfo.php
+phpinfo_temp.php
+index.html
+.agents/
+.codex/
