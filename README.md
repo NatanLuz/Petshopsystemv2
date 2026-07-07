@@ -169,7 +169,7 @@ Petshopsystemv2/
 └── README.md
 ```
 
-### Responsabilidades principais
+## Responsabilidades principais
 
 - `assets/`: estilos e scripts da interface;
 - `config/`: configurações gerais, sessão e conexão com o banco;
@@ -178,7 +178,7 @@ Petshopsystemv2/
 - `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
 - `sql/`: estrutura do banco e dados demonstrativos.
 
-### Requisitos
+## Requisitos
 
 - PHP 7.4 ou superior(recomendado PHP superior para melhor execução);
 - MySQL 5.7+, MariaDB ou versão compatível;
@@ -186,7 +186,7 @@ Petshopsystemv2/
 - extensão MySQLi habilitada;
 - XAMPP recomendado para execução local no Windows.
 
-### Instalação local com XAMPP
+## Instalação local com XAMPP
 
 1. Clone o repositório ou copie o projeto para o diretório do Apache:
 
@@ -204,7 +204,7 @@ Petshopsystemv2/
    http://localhost/Petshopsystemv2/
    ```
 
-### Configuração do arquivo de banco
+## Configuração do arquivo de banco
 
 O arquivo `config/database.php` contém os dados reais de conexão com o banco e não deve ser versionado.
 
@@ -222,7 +222,7 @@ Copy-Item ".\config\database.example.php" ".\config\database.php"
 
 Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor. Nunca envie credenciais reais para o GitHub.
 
-### Configuração para ambiente de hospedagem
+## Configuração para ambiente de hospedagem
 
 A aplicação aceita as seguintes variáveis de ambiente:
 
@@ -254,7 +254,7 @@ Antes de publicar:
 
 ## Configuração do Banco
 
-### Importação pelo phpMyAdmin
+## Importação pelo phpMyAdmin
 
 1. Acesse `http://localhost/phpmyadmin`.
 2. Crie o banco `petshop_system`.
@@ -268,7 +268,7 @@ Antes de publicar:
 
 6. Execute a importação.
 
-### Importação pela linha de comando
+## Importação pela linha de comando
 
 No PowerShell:
 
@@ -280,7 +280,7 @@ cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\ht
 
 Caso o usuário MySQL possua senha, adicione `-p` e informe a senha quando solicitado.
 
-### Configuração padrão para desenvolvimento
+## Configuração padrão para desenvolvimento
 
 A configuração local padrão utiliza:
 
@@ -300,7 +300,7 @@ Esses valores podem ser substituídos pelas variáveis:
 - `BASE_URL`;
 - `APP_ENV`.
 
-### Usuários demonstrativos
+## Usuários demonstrativos
 
 O banco público inclui contas fictícias para avaliação local:
 
@@ -313,7 +313,7 @@ O banco público inclui contas fictícias para avaliação local:
 
 ## Testes
 
-### Verificação da conexão
+## Verificação da conexão
 
 Para verificar a conexão e a existência das tabelas obrigatórias:
 
@@ -327,7 +327,7 @@ Caso o PHP não esteja disponível no `PATH`, utilize:
 & "C:\xampp\php\php.exe" ".\scripts\dev\test_db.php"
 ```
 
-### Teste funcional automatizado
+## Teste funcional automatizado
 
 O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
 
@@ -360,7 +360,7 @@ Crie esse banco e importe `sql/database.sql` antes da execução.
 
 > Execute o teste funcional apenas em um banco isolado. O script cria, altera e remove registros durante a validação.
 
-### Verificação manual recomendada
+## Verificação manual recomendada
 
 1. Entre com um usuário demonstrativo.
 2. Cadastre um cliente.
@@ -375,43 +375,43 @@ Crie esse banco e importe `sql/database.sql` antes da execução.
 
 ## Screenshots
 
-### Dashboard
+## Dashboard
 
 ![Dashboard](Docs/images/Dashboard.PNG)
 
-### Login
+## Login
 
 ![Login](Docs/images/Login.PNG)
 
-### Clientes
+## Clientes
 
 ![Clientes](Docs/images/Clientes.PNG)
 
-### Novo Cliente
+## Novo Cliente
 
 ![Novo Cliente](Docs/images/NovoCliente.PNG)
 
-### Pets
+## Pets
 
 ![Pets](Docs/images/Pets.PNG)
 
-### Novo Pet
+## Novo Pet
 
 ![Novo Pet](Docs/images/NovoPet.PNG)
 
-### Serviços
+## Serviços
 
 ![Serviços](Docs/images/Servicos.PNG)
 
-### Novo Serviço
+## Novo Serviço
 
 ![Novo Serviço](Docs/images/NovoServico.PNG)
 
-### Atendimentos
+## Atendimentos
 
 ![Atendimentos](Docs/images/Atendimentos.PNG)
 
-### Novo Atendimento
+## Novo Atendimento
 
 ![Novo Atendimento](Docs/images/NovoAtendimento.PNG)
 
