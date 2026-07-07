@@ -2,11 +2,6 @@
 
 Sistema web de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP procedural com MySQL/MariaDB.
 
-![Status](https://img.shields.io/badge/Status-Completo-success)
-![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)
-![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 
 ## Deploy em manutenção.
 SEM PREVISÃO DE VOLTA
