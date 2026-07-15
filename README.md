@@ -405,23 +405,9 @@ Petshopsystemv2/
 - `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
 - `sql/`: estrutura do banco e dados demonstrativos.
 
-## 📌 Roadmap
-
-A V2 está finalizada. Os itens abaixo representam possibilidades para versões futuras e não fazem parte da implementação atual:
-
-- nova versão em Laravel, desenvolvida em repositório/projeto separado;
-- controle mais granular de permissões;
-- logs estruturados para auditoria;
-- rotina automatizada de backup;
-- versionamento de preços e serviços;
-- API REST para integrações externas;
-- notificações de agendamento;
-- containerização opcional do ambiente;
-- estudos de recursos de análise e previsão operacional.
-
 ## 🌐 Deploy
 
-A V2 não possui demonstração online ativa. O projeto foi preparado para execução local utilizando XAMPP e pode ser publicado em qualquer servidor compatível com PHP e MySQL.
+Deploy removido pois irei atualizar o projeto para versão V3 e deixar novamente hospedado
 
 Uma nova versão em Laravel será desenvolvida separadamente, com arquitetura e estrutura próprias.
 
