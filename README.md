@@ -27,8 +27,8 @@ O sistema foi desenvolvido a partir de necessidades observadas em um ambiente re
 O projeto está preparado para:
 
 - Apresentação em portfólio;
-- publicação no GitHub;
-- execução local com XAMPP.
+- Publicação no GitHub;
+- Execução local com XAMPP.
 
 ### Problema solucionado
 
@@ -146,7 +146,7 @@ Em produção, o atributo `Secure` do cookie de sessão é ativado quando a apli
 
 O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
 
-- organização modular sem substituição da arquitetura existente;
+- Organização modular sem substituição da arquitetura existente;
 - uso consistente de consultas preparadas;
 - proteção de formulários com tokens CSRF;
 - gerenciamento mais seguro de sessões;
