@@ -147,17 +147,17 @@ Em produção, o atributo `Secure` do cookie de sessão é ativado quando a apli
 O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
 
 - Organização modular sem substituição da arquitetura existente;
-- uso consistente de consultas preparadas;
-- proteção de formulários com tokens CSRF;
-- gerenciamento mais seguro de sessões;
-- escape de dados na saída HTML;
-- manutenção de relacionamentos entre clientes, pets e atendimentos;
-- uso de desativação lógica para preservar referências históricas;
-- padronização de banco e aplicação em UTF-8/`utf8mb4`;
-- separação entre código da aplicação e ferramentas de desenvolvimento;
-- criação de testes funcionais para os fluxos críticos;
-- sanitização de dados antes da publicação;
-- configuração da aplicação para ambientes diferentes por variáveis de ambiente.
+- Uso consistente de consultas preparadas;
+- Proteção de formulários com tokens CSRF;
+- Gerenciamento mais seguro de sessões;
+- Escape de dados na saída HTML;
+- Manutenção de relacionamentos entre clientes, pets e atendimentos;
+- Uso de desativação lógica para preservar referências históricas;
+- Padronização de banco e aplicação em UTF-8/`utf8mb4`;
+- Separação entre código da aplicação e ferramentas de desenvolvimento;
+- Criação de testes funcionais para os fluxos críticos;
+- Sanitização de dados antes da publicação;
+- Configuração da aplicação para ambientes diferentes por variáveis de ambiente.
 
 A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
 
