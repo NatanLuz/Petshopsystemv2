@@ -26,7 +26,7 @@ O sistema foi desenvolvido a partir de necessidades observadas em um ambiente re
 
 O projeto está preparado para:
 
-- apresentação em portfólio;
+- Apresentação em portfólio;
 - publicação no GitHub;
 - execução local com XAMPP.
 
