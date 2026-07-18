@@ -42,7 +42,7 @@ Quando essas informações são controladas de forma fragmentada, surgem problem
 - Baixa visibilidade sobre serviços realizados e faturamento;
 - Excesso de etapas durante o atendimento na recepção.
 
-O Pet Shop System V2 centraliza essas operações em um único sistema, com um fluxo direto:
+O PetShop System V2 centraliza essas operações em um único sistema, com um fluxo direto:
 
 **cliente → pet → serviço → atendimento → acompanhamento no dashboard**
 
