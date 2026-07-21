@@ -5,7 +5,7 @@ function confirmDelete(
   return confirm(message);
 }
 
-// Mascara para CPF
+// Mascara para o CPF
 function maskCPF(input) {
   let value = input.value.replace(/\D/g, "");
   value = value.replace(/(\d{3})(\d)/, "$1.$2");
