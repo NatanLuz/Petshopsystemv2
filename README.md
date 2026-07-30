@@ -1,4 +1,4 @@
-# PetShop System V2
+## PetShop System V2
 
 [![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
@@ -12,7 +12,7 @@ Sistema Web de gestão operacional para petshops e clínicas veterinárias, dese
 
 ## 📖 Sobre o projeto
 
-### Status do projeto
+## Status do projeto
 
 A **V2 está estável e finalizada** e permanece pública no GitHub como referência técnica.
 
@@ -20,7 +20,7 @@ O projeto não possui demonstração online ativa nem previsão de retorno do de
 
 Uma nova versão em Laravel será desenvolvida separadamente, com arquitetura e estrutura modernizadas.
 
-### Objetivo do projeto
+## Objetivo do projeto
 
 O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
 
@@ -30,7 +30,7 @@ O projeto está preparado para:
 - Publicação no GitHub;
 - Execução local com XAMPP.
 
-### Problema solucionado
+## Problema solucionado
 
 A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
 
@@ -46,7 +46,7 @@ O PetShop System V2 centraliza essas operações em um único sistema, com um fl
 
 **cliente → pet → serviço → atendimento → acompanhamento no dashboard**
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 | Módulo | Funcionalidades |
 | --- | --- |
@@ -80,31 +80,31 @@ Os atendimentos podem utilizar os seguintes status:
 
 ![Clientes](Docs/images/Clientes.PNG)
 
-### Novo Cliente
+## Novo Cliente
 
 ![Novo Cliente](Docs/images/NovoCliente.PNG)
 
-### Pets
+## Pets
 
 ![Pets](Docs/images/Pets.PNG)
 
-### Novo Pet
+## Novo Pet
 
 ![Novo Pet](Docs/images/NovoPet.PNG)
 
-### Serviços
+## Serviços
 
 ![Serviços](Docs/images/Servicos.PNG)
 
-### Novo Serviço
+## Novo Serviço
 
 ![Novo Serviço](Docs/images/NovoServico.PNG)
 
-### Atendimentos
+## Atendimentos
 
 ![Atendimentos](Docs/images/Atendimentos.PNG)
 
-### Novo Atendimento
+## Novo Atendimento
 
 ![Novo Atendimento](Docs/images/NovoAtendimento.PNG)
 
@@ -120,7 +120,7 @@ Os atendimentos podem utilizar os seguintes status:
 - **Ambiente local recomendado:** Windows com XAMPP
 - **Servidor web:** Apache
 
-### Segurança aplicada
+## Segurança aplicada
 
 A V2 inclui medidas de segurança aplicadas ao contexto de uma aplicação PHP procedural:
 
@@ -142,7 +142,7 @@ Em produção, o atributo `Secure` do cookie de sessão é ativado quando a apli
 
 > As medidas existentes reduzem riscos comuns, como SQL Injection, XSS, CSRF, exposição de arquivos internos e uso inseguro de sessões. Elas não substituem a configuração segura do servidor e da hospedagem.
 
-### Aprendizados técnicos
+## Aprendizados técnicos
 
 O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
 
@@ -171,7 +171,7 @@ A evolução da V1 para a V2 teve como foco estabilidade, segurança, organizaç
 - extensão MySQLi habilitada;
 - XAMPP recomendado para execução local no Windows.
 
-### Instalação local com XAMPP
+## Instalação local com XAMPP
 
 1. Clone o repositório ou copie o projeto para o diretório do Apache:
 
@@ -189,7 +189,7 @@ A evolução da V1 para a V2 teve como foco estabilidade, segurança, organizaç
    http://localhost/Petshopsystemv2/
    ```
 
-### Configuração do arquivo de banco
+## Configuração do arquivo de banco
 
 O arquivo `config/database.php` contém os dados reais de conexão com o banco e não deve ser versionado.
 
@@ -207,7 +207,7 @@ Copy-Item ".\config\database.example.php" ".\config\database.php"
 
 Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor. Nunca envie credenciais reais para o GitHub.
 
-### Configuração para ambiente de hospedagem
+## Configuração para ambiente de hospedagem
 
 A aplicação aceita as seguintes variáveis de ambiente:
 
@@ -239,7 +239,7 @@ Antes de publicar:
 
 ### Configuração do banco
 
-#### Importação pelo phpMyAdmin
+## Importação pelo phpMyAdmin
 
 1. Acesse `http://localhost/phpmyadmin`.
 2. Crie o banco `petshop_system`.
@@ -253,7 +253,7 @@ Antes de publicar:
 
 6. Execute a importação.
 
-#### Importação pela linha de comando
+## Importação pela linha de comando
 
 No PowerShell:
 
@@ -265,7 +265,7 @@ cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\ht
 
 Caso o usuário MySQL possua senha, adicione `-p` e informe a senha quando solicitado.
 
-#### Configuração padrão para desenvolvimento
+## Configuração padrão para desenvolvimento
 
 A configuração local padrão utiliza:
 
@@ -285,7 +285,7 @@ Esses valores podem ser substituídos pelas variáveis:
 - `BASE_URL`;
 - `APP_ENV`.
 
-#### Usuários demonstrativos
+## Usuários demonstrativos
 
 O banco público inclui contas fictícias para avaliação local:
 
@@ -312,7 +312,7 @@ Caso o PHP não esteja disponível no `PATH`, utilize:
 & "C:\xampp\php\php.exe" ".\scripts\dev\test_db.php"
 ```
 
-#### Teste funcional automatizado
+## Teste funcional automatizado
 
 O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
 
@@ -345,7 +345,7 @@ Crie esse banco e importe `sql/database.sql` antes da execução.
 
 > Execute o teste funcional apenas em um banco isolado. O script cria, altera e remove registros durante a validação.
 
-#### Verificação manual recomendada
+## Verificação manual recomendada
 
 1. Entre com um usuário demonstrativo.
 2. Cadastre um cliente.
@@ -396,7 +396,7 @@ Petshopsystemv2/
 └── README.md
 ```
 
-### Responsabilidades principais
+## Responsabilidades principais
 
 - `assets/`: estilos e scripts da interface;
 - `config/`: configurações gerais, sessão e conexão com o banco;
@@ -407,20 +407,16 @@ Petshopsystemv2/
 
 ## 🌐 Deploy
 
-Deploy removido pois irei atualizar o projeto para versão V3 e deixar novamente hospedado
-
-Uma nova versão em Laravel será desenvolvida separadamente, com arquitetura e estrutura próprias.
+Deploy removido pois irei atualizar o projeto para versão V3
 
 ## 👤 Autor
 
 **Natan Da Luz**
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
+
 - LinkedIn: [linkedin.com/in/natandaluz](https://www.linkedin.com/in/natandaluz/)
+  
 - Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
 Projeto desenvolvido com base em uma operação real de petshop.
-
-## 📄 Licença
-
-Este projeto está sem uma licença definida no momento.
