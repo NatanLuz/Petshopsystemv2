@@ -16,10 +16,6 @@ Sistema Web de gestão operacional para petshops e clínicas veterinárias, dese
 
 A **V2 está estável e finalizada** e permanece pública no GitHub como referência técnica.
 
-O projeto não possui demonstração online ativa nem previsão de retorno do deploy.
-
-Uma nova versão em Laravel será desenvolvida separadamente, com arquitetura e estrutura modernizadas.
-
 ## Objetivo do projeto
 
 O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
