@@ -14,7 +14,7 @@ Sistema Web de gestão operacional para petshops e clínicas veterinárias, dese
 
 ## Status do projeto
 
-A **V2 está estável e finalizada** e permanece pública no GitHub como referência técnica.
+A **V2 está estável e finalizada** e permanece pública no GitHub
 
 ## Objetivo do projeto
 
