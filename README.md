@@ -20,12 +20,6 @@ A **V2 está estável e finalizada** e permanece pública no GitHub
 
 O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
 
-O projeto está preparado para:
-
-- Apresentação em portfólio;
-- Publicação no GitHub;
-- Execução local com XAMPP.
-
 ## Problema solucionado
 
 A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
