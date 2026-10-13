@@ -395,10 +395,6 @@ Petshopsystemv2/
 - `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
 - `sql/`: estrutura do banco e dados demonstrativos.
 
-## 🌐 Deploy
-
-Deploy removido pois irei atualizar o projeto para versão V3
-
 ## 👤 Autor
 
 **Natan Da Luz**
