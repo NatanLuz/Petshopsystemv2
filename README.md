@@ -100,7 +100,7 @@ Os atendimentos podem utilizar os seguintes status:
 
 ## 🚀 Tecnologias
 
-- **Backend:** PHP procedural
+- **Backend:** PHP 
 - **Acesso ao banco:** MySQLi
 - **Banco de dados:** MySQL ou MariaDB
 - **Frontend:** HTML5, CSS3 e JavaScript
