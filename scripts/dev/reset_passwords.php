@@ -1,4 +1,5 @@
 <?php
+// login é todo fictício 
 //Script único para redefinir senhas de usuários de exemplo para corresponder à documentação.
 // admin@petshop.com => admin123
 // recepcao@petshop.com => recepcao123
