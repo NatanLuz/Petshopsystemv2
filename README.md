@@ -2,59 +2,59 @@
 
 [![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
 [![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?logo=fontawesome&logoColor=white)](https://fontawesome.com/)
 
-Sistema de gestão operacional para petshops e clínicas veterinárias, desenvolvido em PHP com MySQL/MariaDB !
+Operational management system for pet shops and veterinary clinics, developed in PHP with MySQL/MariaDB!
 
-## 📖 Sobre o projeto
+## 📖 About the project
 
-## Status do projeto
+## Project status
 
-A **V2 está estável e finalizada** e permanece pública no GitHub
+**V2 is stable and complete** and remains publicly available on GitHub.
 
-## Objetivo do projeto
+## Project objective
 
-O sistema foi desenvolvido a partir de necessidades observadas em um ambiente real de petshop. A versão pública utiliza dados demonstrativos/fictícios e sanitizados para preservar a privacidade dos dados originais.
+The system was developed based on needs observed in a real pet shop environment. The public version uses demo, fictitious, and sanitized data to preserve the privacy of the original data.
 
-## Problema solucionado
+## Problem solved
 
-A rotina de petshops e clínicas veterinárias envolve o gerenciamento de clientes, pets, serviços e atendimentos relacionados entre si.
+The routine of pet shops and veterinary clinics involves managing related clients, pets, services, and appointments.
 
-Quando essas informações são controladas de forma fragmentada, surgem problemas como:
+When this information is managed in a fragmented way, problems arise, such as:
 
-- Dificuldade para localizar o histórico de clientes e pets;
-- Perda de informações sobre atendimentos;
-- Falta de padronização nos status da agenda;
-- Baixa visibilidade sobre serviços realizados e faturamento;
-- Excesso de etapas durante o atendimento na recepção.
+- Difficulty locating client and pet history;
+- loss of appointment information;
+- lack of standardization in scheduling statuses;
+- limited visibility into completed services and revenue;
+- excessive steps during reception service.
 
-O PetShop System V2 centraliza essas operações em um único sistema, com um fluxo direto:
+PetShop System V2 centralizes these operations in a single system with a direct workflow:
 
-**cliente → pet → serviço → atendimento → acompanhamento no dashboard**
+**client → pet → service → appointment → dashboard tracking**
 
-##  Funcionalidades
+## Features
 
-| Módulo | Funcionalidades |
-| --- | --- |
-| Autenticação | Login, logout e identificação dos perfis administrador e recepcionista |
-| Clientes | Cadastro, consulta, edição, pesquisa e desativação |
-| Pets | Cadastro vinculado ao cliente, edição, filtros e desativação |
-| Serviços | Cadastro de preço, duração, categoria, edição, filtros e desativação |
-| Atendimentos | Agendamento, edição, exclusão, observações e controle de status |
-| Dashboard | Indicadores operacionais, faturamento e gráficos |
-| Filtros | Pesquisa por texto, espécie, categoria, data e status |
-| Ferramentas de desenvolvimento | Scripts auxiliares para instalação, conexão e testes funcionais |
+| Module | Features |
+| ------------------------------ | ---------------------------------------------------------------------- |
+| Authentication | Login, logout, and identification of administrator and receptionist profiles |
+| Clients | Registration, viewing, editing, searching, and deactivation |
+| Pets | Client-linked registration, editing, filtering, and deactivation |
+| Services | Price, duration, and category registration, editing, filtering, and deactivation |
+| Appointments | Scheduling, editing, deletion, notes, and status control |
+| Dashboard | Operational indicators, revenue, and charts |
+| Filters | Search by text, species, category, date, and status |
+| Development tools | Auxiliary scripts for installation, connection, and functional testing |
 
-Os atendimentos podem utilizar os seguintes status:
+Appointments can use the following statuses:
 
-- Agendado;
-- Em Atendimento;
-- Concluído;
-- Cancelado.
+- Scheduled;
+- In Service;
+- Completed;
+- Cancelled.
 
 ## 🖼️ Screenshots
 
@@ -66,186 +66,184 @@ Os atendimentos podem utilizar os seguintes status:
 
 ![Login](Docs/images/Login.PNG)
 
-### Clientes
+### Clients
 
-![Clientes](Docs/images/Clientes.PNG)
+![Clients](Docs/images/Clientes.PNG)
 
-## Novo Cliente
+## New Client
 
-![Novo Cliente](Docs/images/NovoCliente.PNG)
+![New Client](Docs/images/NovoCliente.PNG)
 
 ## Pets
 
 ![Pets](Docs/images/Pets.PNG)
 
-## Novo Pet
+## New Pet
 
-![Novo Pet](Docs/images/NovoPet.PNG)
+![New Pet](Docs/images/NovoPet.PNG)
 
-## Serviços
+## Services
 
-![Serviços](Docs/images/Servicos.PNG)
+![Services](Docs/images/Servicos.PNG)
 
-## Novo Serviço
+## New Service
 
-![Novo Serviço](Docs/images/NovoServico.PNG)
+![New Service](Docs/images/NovoServico.PNG)
 
-## Atendimentos
+## Appointments
 
-![Atendimentos](Docs/images/Atendimentos.PNG)
+![Appointments](Docs/images/Atendimentos.PNG)
 
-## Novo Atendimento
+## New Appointment
 
-![Novo Atendimento](Docs/images/NovoAtendimento.PNG)
+![New Appointment](Docs/images/NovoAtendimento.PNG)
 
-## 🚀 Tecnologias
+## 🚀 Technologies
 
-- **Backend:** PHP 
-- **Acesso ao banco:** MySQLi
-- **Banco de dados:** MySQL ou MariaDB
-- **Frontend:** HTML5, CSS3 e JavaScript
-- **Gráficos:** Chart.js
-- **Ícones:** Font Awesome
-- **Codificação:** UTF-8 e `utf8mb4`
-- **Ambiente local recomendado:** Windows com XAMPP
-- **Servidor web:** Apache
+- **Backend:** PHP
+- **Database access:** MySQLi
+- **Database:** MySQL or MariaDB
+- **Frontend:** HTML5, CSS3, and JavaScript
+- **Charts:** Chart.js
+- **Icons:** Font Awesome
+- **Encoding:** UTF-8 and `utf8mb4`
+- **Recommended local environment:** Windows with XAMPP
+- **Web server:** Apache
 
-## Segurança aplicada
+## Applied security
 
-A V2 inclui medidas de segurança aplicadas ao contexto de uma aplicação PHP procedural:
+V2 includes security measures applied to the context of a procedural PHP application:
 
-- armazenamento de senhas com `password_hash()`;
-- validação de senhas com `password_verify()`;
-- consultas preparadas para entradas variáveis;
-- escape de saída HTML com `htmlspecialchars()`;
-- tokens CSRF nos formulários;
-- comparação segura de tokens com `hash_equals()`;
-- regeneração do identificador da sessão após o login;
-- cookies de sessão com `HttpOnly` e `SameSite=Lax`;
-- modo estrito de sessão;
-- bloqueio de páginas internas para usuários não autenticados;
-- mensagens de erro de banco sem exposição direta de credenciais;
-- bloqueio de acesso web às pastas `config`, `scripts` e `sql` pelo `.htaccess`;
-- cabeçalhos HTTP básicos de proteção via Apache, quando o módulo de headers está habilitado.
+- password storage with `password_hash()`;
+- password validation with `password_verify()`;
+- prepared statements for variable inputs;
+- HTML output escaping with `htmlspecialchars()`;
+- CSRF tokens in forms;
+- secure token comparison with `hash_equals()`;
+- session identifier regeneration after login;
+- session cookies with `HttpOnly` and `SameSite=Lax`;
+- strict session mode;
+- blocking internal pages for unauthenticated users;
+- database error messages without direct exposure of credentials;
+- blocking web access to the `config`, `scripts`, and `sql` folders through `.htaccess`;
+- basic HTTP protection headers through Apache when the headers module is enabled.
 
-Em produção, o atributo `Secure` do cookie de sessão é ativado quando a aplicação é acessada por HTTPS.
+In production, the `Secure` attribute of the session cookie is enabled when the application is accessed over HTTPS.
 
-> As medidas existentes reduzem riscos comuns, como SQL Injection, XSS, CSRF, exposição de arquivos internos e uso inseguro de sessões. Elas não substituem a configuração segura do servidor e da hospedagem.
+> The existing measures reduce common risks such as SQL Injection, XSS, CSRF, exposure of internal files, and insecure session usage. They do not replace secure server and hosting configuration.
 
-## Aprendizados técnicos
+## Technical learnings
 
-O desenvolvimento da V2 consolidou práticas importantes para aplicações PHP procedurais:
+V2 development consolidated important practices for procedural PHP applications:
 
-- Organização modular sem substituição da arquitetura existente;
-- Uso consistente de consultas preparadas;
-- Proteção de formulários com tokens CSRF;
-- Gerenciamento mais seguro de sessões;
-- Escape de dados na saída HTML;
-- Manutenção de relacionamentos entre clientes, pets e atendimentos;
-- Uso de desativação lógica para preservar referências históricas;
-- Padronização de banco e aplicação em UTF-8/`utf8mb4`;
-- Separação entre código da aplicação e ferramentas de desenvolvimento;
-- Criação de testes funcionais para os fluxos críticos;
-- Sanitização de dados antes da publicação;
-- Configuração da aplicação para ambientes diferentes por variáveis de ambiente.
+- Modular organization without replacing the existing architecture;
+- consistent use of prepared statements;
+- form protection with CSRF tokens;
+- safer session management;
+- data escaping in HTML output;
+- maintenance of relationships between clients, pets, and appointments;
+- use of logical deactivation to preserve historical references;
+- database and application standardization with UTF-8/`utf8mb4`;
+- separation between application code and development tools;
+- creation of functional tests for critical flows;
+- data sanitization before publication;
+- application configuration for different environments through environment variables.
 
-A evolução da V1 para a V2 teve como foco estabilidade, segurança, organização e previsibilidade operacional, mantendo a implementação em PHP procedural.
+The evolution from V1 to V2 focused on stability, security, organization, and operational predictability while keeping the implementation in procedural PHP.
 
-## ⚙️ Como executar
+## ⚙️ How to run
 
-### Requisitos
+### Requirements
 
-- PHP 7.4 ou superior (recomenda-se uma versão mais recente);
-- MySQL 5.7+, MariaDB ou versão compatível;
+- PHP 7.4 or higher (a newer version is recommended);
+- MySQL 5.7+, MariaDB, or a compatible version;
 - Apache;
-- extensão MySQLi habilitada;
-- XAMPP recomendado para execução local no Windows.
+- MySQLi extension enabled;
+- XAMPP recommended for local execution on Windows.
 
-## Instalação local com XAMPP
+## Local installation with XAMPP
 
-1. Clone o repositório ou copie o projeto para o diretório do Apache:
+1. Clone the repository or copy the project to the Apache directory:
 
    ```powershell
    Copy-Item ".\Petshopsystemv2" "C:\xampp\htdocs\" -Recurse -Force
    ```
 
-2. Inicie o Apache e o MySQL pelo XAMPP Control Panel.
+2. Start Apache and MySQL through the XAMPP Control Panel.
 
-3. Crie e configure o banco conforme a seção seguinte.
+3. Create and configure the database according to the next section.
 
-4. Acesse:
+4. Access:
 
    ```text
    http://localhost/Petshopsystemv2/
    ```
 
-## Configuração do arquivo de banco
+## Database configuration file
 
-O arquivo `config/database.php` contém os dados reais de conexão com o banco e não deve ser versionado.
+The `config/database.php` file contains the actual database connection details and must not be committed.
 
-O repositório público mantém apenas o modelo seguro:
+The public repository includes only the safe template:
 
 ```text
 config/database.example.php
 ```
 
-Para configurar o projeto, copie o modelo:
+To configure the project, copy the template:
 
 ```powershell
 Copy-Item ".\config\database.example.php" ".\config\database.php"
 ```
 
-Depois preencha `config/database.php` com os dados reais apenas no ambiente local ou no servidor. Nunca envie credenciais reais para o GitHub.
+Then fill in `config/database.php` with the real details only in the local or server environment. Never send real credentials to GitHub.
 
-## Configuração para ambiente de hospedagem
+## Hosting environment configuration
 
-A aplicação aceita as seguintes variáveis de ambiente:
+The application accepts the following environment variables:
 
 ```env
 APP_ENV=production
-BASE_URL=https://seu-dominio.example/
+BASE_URL=https://your-domain.example/
 DB_HOST=localhost
-DB_USER=seu_usuario
-DB_PASS=sua_senha
-DB_NAME=seu_banco
+DB_USER=your_user
+DB_PASS=your_password
+DB_NAME=your_database
 ```
 
-O arquivo `.env.example` funciona como referência. A aplicação lê as variáveis disponibilizadas pelo ambiente do servidor PHP; ela não carrega automaticamente um arquivo `.env`.
+The `.env.example` file serves as a reference. The application reads variables provided by the PHP server environment; it does not automatically load a `.env` file.
 
-Caso a hospedagem não ofereça configuração de variáveis de ambiente, defina os valores diretamente em `config/database.php` durante a publicação e mantenha esse arquivo fora do Git. O arquivo público para referência é `config/database.example.php`.
+Before publishing:
 
-Antes de publicar:
+- use HTTPS;
+- use a dedicated database user without administrator privileges;
+- configure `BASE_URL` correctly;
+- do not publish real credentials;
+- do not commit `config/database.php`;
+- change the passwords of demo users;
+- keep `config/`, `scripts/`, and `sql/` outside public access;
+- confirm that the `.htaccess` rules are respected by the server;
+- disable directory listing;
+- keep logs, backups, sessions, and temporary files outside the repository.
 
-- utilize HTTPS;
-- use um usuário de banco dedicado, sem privilégios de administrador;
-- configure corretamente a `BASE_URL`;
-- não publique credenciais reais;
-- não versione `config/database.php`;
-- altere as senhas dos usuários demonstrativos;
-- mantenha `config/`, `scripts/` e `sql/` fora do acesso público;
-- confirme que as regras do `.htaccess` são respeitadas pelo servidor;
-- desative a listagem de diretórios;
-- mantenha logs, backups, sessões e arquivos temporários fora do repositório.
+### Database configuration
 
-### Configuração do banco
+## Import through phpMyAdmin
 
-## Importação pelo phpMyAdmin
-
-1. Acesse `http://localhost/phpmyadmin`.
-2. Crie o banco `petshop_system`.
-3. Utilize codificação `utf8mb4`.
-4. Abra a aba **Importar**.
-5. Selecione:
+1. Open `http://localhost/phpmyadmin`.
+2. Create the `petshop_system` database.
+3. Use `utf8mb4` encoding.
+4. Open the **Import** tab.
+5. Select:
 
    ```text
    sql/database.sql
    ```
 
-6. Execute a importação.
+6. Run the import.
 
-## Importação pela linha de comando
+## Import through the command line
 
-No PowerShell:
+In PowerShell:
 
 ```powershell
 cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root -e "CREATE DATABASE IF NOT EXISTS petshop_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"'
@@ -253,20 +251,20 @@ cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root -e "CREATE DATABASE IF NOT EX
 cmd.exe /c '"C:\xampp\mysql\bin\mysql.exe" -u root petshop_system < "C:\xampp\htdocs\Petshopsystemv2\sql\database.sql"'
 ```
 
-Caso o usuário MySQL possua senha, adicione `-p` e informe a senha quando solicitado.
+If the MySQL user has a password, add `-p` and enter the password when prompted.
 
-## Configuração padrão para desenvolvimento
+## Default development configuration
 
-A configuração local padrão utiliza:
+The default local configuration uses:
 
 ```text
 Host: localhost
-Usuário: root
-Senha: vazia
-Banco: petshop_system
+User: root
+Password: empty
+Database: petshop_system
 ```
 
-Esses valores podem ser substituídos pelas variáveis:
+These values can be replaced by the following variables:
 
 - `DB_HOST`;
 - `DB_USER`;
@@ -275,80 +273,80 @@ Esses valores podem ser substituídos pelas variáveis:
 - `BASE_URL`;
 - `APP_ENV`.
 
-## Usuários demonstrativos
+## Demo users
 
-O banco público inclui contas fictícias para avaliação local:
+The public database includes fictitious accounts for local evaluation:
 
-| Perfil | E-mail | Senha |
-| --- | --- | --- |
-| Administrador | `admin@petshop.com` | `admin123` |
-| Recepcionista | `recepcao@petshop.com` | `recepcao123` |
+| Profile | E-mail | Password |
+| ------------- | ---------------------- | ------------- |
+| Administrator | `admin@petshop.com` | `admin123` |
+| Receptionist | `recepcao@petshop.com` | `recepcao123` |
 
-> Essas credenciais são exclusivamente demonstrativas. Em um ambiente de produção real, altere ou remova essas contas antes de disponibilizar a aplicação.
+> These credentials are for demonstration only. In a real production environment, change or remove these accounts before making the application available.
 
-### Testes
+### Tests
 
-#### Verificação da conexão
+#### Connection verification
 
-Para verificar a conexão e a existência das tabelas obrigatórias:
+To verify the connection and the existence of the required tables:
 
 ```powershell
 & php ".\scripts\dev\test_db.php"
 ```
 
-Caso o PHP não esteja disponível no `PATH`, utilize:
+If PHP is not available in the `PATH`, use:
 
 ```powershell
 & "C:\xampp\php\php.exe" ".\scripts\dev\test_db.php"
 ```
 
-## Teste funcional automatizado
+## Automated functional test
 
-O projeto inclui um script PowerShell que utiliza um banco isolado para validar:
+The project includes a PowerShell script that uses an isolated database to validate:
 
-- login como administrador;
-- login como recepcionista;
+- administrator login;
+- receptionist login;
 - logout;
-- CRUD de clientes;
-- CRUD de pets;
-- CRUD de serviços;
-- CRUD de atendimentos;
+- client CRUD;
+- pet CRUD;
+- service CRUD;
+- appointment CRUD;
 - dashboard;
-- filtros;
-- proteção CSRF;
-- bloqueio de páginas privadas;
-- atributos do cookie de sessão.
+- filters;
+- CSRF protection;
+- private page blocking;
+- session cookie attributes.
 
-Execute o teste:
+Run the test:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\scripts\dev\functional_test.ps1"
 ```
 
-Por padrão, o teste utiliza o banco:
+By default, the test uses the following database:
 
 ```text
 petshop_system_v2_test
 ```
 
-Crie esse banco e importe `sql/database.sql` antes da execução.
+Create this database and import `sql/database.sql` before running the test.
 
-> Execute o teste funcional apenas em um banco isolado. O script cria, altera e remove registros durante a validação.
+> Run the functional test only on an isolated database. The script creates, changes, and removes records during validation.
 
-## Verificação manual recomendada
+## Recommended manual verification
 
-1. Entre com um usuário demonstrativo.
-2. Cadastre um cliente.
-3. Cadastre um pet vinculado ao cliente.
-4. Cadastre ou selecione um serviço.
-5. Crie um atendimento.
-6. Atualize o status do atendimento.
-7. Confira os indicadores no dashboard.
-8. Teste os filtros dos módulos.
-9. Finalize a sessão.
-10. Tente acessar uma página interna sem login e confirme o redirecionamento.
+1. Log in with a demo user.
+2. Register a client.
+3. Register a pet linked to the client.
+4. Register or select a service.
+5. Create an appointment.
+6. Update the appointment status.
+7. Check the indicators on the dashboard.
+8. Test the module filters.
+9. End the session.
+10. Try to access an internal page without logging in and confirm the redirect.
 
-## 📂 Estrutura do projeto
+## 📂 Project structure
 
 ```text
 Petshopsystemv2/
@@ -386,23 +384,21 @@ Petshopsystemv2/
 └── README.md
 ```
 
-## Responsabilidades principais
+## Main responsibilities
 
-- `assets/`: estilos e scripts da interface;
-- `config/`: configurações gerais, sessão e conexão com o banco;
-- `includes/`: componentes compartilhados da interface;
-- `pages/`: módulos funcionais da aplicação;
-- `scripts/dev/`: ferramentas auxiliares de desenvolvimento e testes;
-- `sql/`: estrutura do banco e dados demonstrativos.
+- `assets/`: interface styles and scripts;
+- `config/`: general settings, session, and database connection;
+- `includes/`: shared interface components;
+- `pages/`: application functional modules;
+- `scripts/dev/`: auxiliary development and testing tools;
+- `sql/`: database structure and demo data.
 
-## 👤 Autor
+## 👤 Author
 
 **Natan Da Luz**
 
 - E-mail: [natandaluz01@gmail.com](mailto:natandaluz01@gmail.com)
-
 - LinkedIn: [linkedin.com/in/natandaluz](https://www.linkedin.com/in/natandaluz/)
-  
-- Portfólio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
+- Portfolio: [portfolionatan.vercel.app](https://portfolionatan.vercel.app/)
 
-Projeto desenvolvido com base em uma operação real de petshop.
+Project developed based on a real pet shop operation.
